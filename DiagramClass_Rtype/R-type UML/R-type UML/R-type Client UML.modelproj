@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{be1c1a79-bf7e-48c1-a955-c88fa2d247f3}</ProjectGuid>
+    <ArchitectureToolsVersion>1.0.0.0</ArchitectureToolsVersion>
+    <Name>R-type Client UML</Name>
+    <RootNamespace>R-type UML</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
+  <ItemGroup>
+    <Content Include="ModelDefinition\Package1_1544.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package1_1545.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package2_1544.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1054.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1543.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1544.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1545.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1554.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1620.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1830.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1832.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_2138.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLThreadTools.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLThreadTools.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLThreadTools.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="UMLObjects.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLObjects.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLObjects.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="UMLInputs.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLInputs.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLInputs.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="UMLReseau.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLReseau.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLReseau.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="UMLClientGlobalView.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLClientGlobalView.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLClientGlobalView.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="UMLGameState.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLGameState.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLGameState.classdiagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\R-type UML.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>

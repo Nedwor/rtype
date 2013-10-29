@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="219e3717-d6c9-4dcd-82df-11e74b83cb72"
+  name="R-type Server" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="6e17e244-241d-42fc-af19-1817555e0027"
+        LastKnownName="network"
+        LastKnownLocation="Package_1102.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d0107e9c-f29a-4db5-96f6-632c775557aa"
+        name="SOCKET" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="eade6616-24e7-4619-b2c6-2267d296a5ca"
+        name="int" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="c2165bfd-f48e-42f9-9524-241758c2259d"
+        LastKnownName="thread_tools"
+        LastKnownLocation="Package_1456.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="70030778-5ade-4481-bf24-4918ba7154ed"
+        name="Packet"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="a2d519ea-11b3-4d3c-96b2-cba281b8571a"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="ISocket"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="ef489c2d-efa9-4d5d-8138-a54f2ea312f1"
+              LastKnownName="ISocket"
+              LastKnownLocation="Package_1102.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="14f5abc8-132b-431d-ac15-434f9834906e"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="73751f3f-8838-4304-948d-f70a3342678f"
+                  name="ISocket"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="63d576f8-26a1-419b-88ff-e706103ede50"
+            name="message"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="c6debde9-af85-4694-a548-c98d8ca5a8e1"
+                LastKnownName="string"
+                LastKnownLocation="R-type Server.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="c6debde9-af85-4694-a548-c98d8ca5a8e1"
+        name="string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="2e07b41d-4d46-4a0d-be78-47df3c80f479"
+        name="Client"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="7ab1c73e-cf59-4495-ab9f-8f0ac6cd7f19"
+            isDerived="false"
+            sourceEndRoleName="Client"
+            targetEndRoleName="ISocket"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="ef489c2d-efa9-4d5d-8138-a54f2ea312f1"
+              LastKnownName="ISocket"
+              LastKnownLocation="Package_1102.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3b583af6-98bd-4f0f-8a20-b1fa3fb6a08e"
+                  name="Client"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b0efb95e-baaa-43ad-b602-4d532ef14490"
+                  name="ISocket"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e14f682d-16c7-49f4-a9ac-87bfae15f855"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="ManageServer"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="dd1e281a-42c2-4df6-9a2f-98062be24e74"
+              LastKnownName="Room"
+              LastKnownLocation="Package_1102.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a6af1a75-f673-4e42-9654-d9aee39d4efd"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1e22ac0f-8d87-4add-b1a1-52280449c2ed"
+                  name="ManageServer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="b5fd87ca-914f-49e4-8aa6-e76942d0872b"
+            name="received"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="c6debde9-af85-4694-a548-c98d8ca5a8e1"
+                LastKnownName="string"
+                LastKnownLocation="R-type Server.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="2045d1a2-81a1-44a5-8855-915460b6ac78"
+            name="close"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="16ef9b73-9d61-47ec-bc36-7ae08c63c55a"
+            name="read"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="24af760f-94c2-4941-95ae-db5d871254f6"
+        name="ManageRooms"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="ccb79b43-2944-4984-994b-078b56439ca5"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="IServerSocket"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="3a9c1a3a-1897-4cd0-a9b2-a517579832c5"
+              LastKnownName="IServerSocket"
+              LastKnownLocation="Package_1102.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9ed20cff-1b8f-4930-81aa-07b76fbdf380"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="30cc0da8-b617-47a1-b76a-dab536d8e40f"
+                  name="IServerSocket"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="28b6e9cb-55fa-4fd3-86f8-383ed32b8d91"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="list: Thread"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="be654b69-3122-4bfb-8aa7-99dc3fb5e725"
+              LastKnownName="Thread"
+              LastKnownLocation="Package_1456.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d99cb63f-5025-440f-82ad-3c81f7f6a7e0"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7bbea7c7-ef6b-4f12-b111-23a4493da6bc"
+                  name="list: Thread"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="3a6c1a51-f2ad-437c-8715-c683b38bdc03"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="598b79a4-bc7c-4a6a-bea4-6e0623dd2a1d"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="19875f05-2cfd-468f-8c6d-b07ff9b07682"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="list: Room"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="dd1e281a-42c2-4df6-9a2f-98062be24e74"
+              LastKnownName="Room"
+              LastKnownLocation="Package_1102.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="eeb6467a-c4ed-45ce-87b8-870b2a4c17b1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c3fad563-53e6-4e88-a420-28e07df412e7"
+                  name="list: Room"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="009fbbd3-9cec-496a-a264-e3b315eb938e"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="list: WaitingClient"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="2e07b41d-4d46-4a0d-be78-47df3c80f479"
+              LastKnownName="Client"
+              LastKnownLocation="R-type Server.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="334e5b8d-0365-483a-8bd5-464dc0b1a3ca"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="17322aee-ee13-45b2-b4f6-f948de2664a2"
+                  name="list: WaitingClient"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="d929dc91-e8d3-44b9-9f8f-d0b522341943"
+            name="roomToDelete"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="1903a78b-7da7-4bdb-bcfc-2c0df1f54108"
+                LastKnownName="queue"
+                LastKnownLocation="R-type Server.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="6df3bd34-afdd-4f91-9109-9547c15e5aa2"
+            name="addRoomToDelete"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="ae9727bd-cce7-4883-8be4-42a5db93d43c"
+            name="sendRoomsAvailable"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="4de3b6d2-94cf-4aad-992a-f62380750d47"
+        name="Class1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="52c5112c-e29f-45e0-9f8e-a41d28a337e6"
+        name="list" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="1903a78b-7da7-4bdb-bcfc-2c0df1f54108"
+        name="queue" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
