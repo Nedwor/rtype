@@ -107,3 +107,8 @@ ISocket * WinSocket::acceptedConnection()
 	nsocket->setSocket(sock);
 	return (nsocket);
 }
+
+int			WinSocket::getSocket() const
+{
+	return this->sock;
+};

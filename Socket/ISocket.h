@@ -1,3 +1,6 @@
+#ifndef __ISOCKET__
+#define __ISOCKET__
+
 #include <string.h>
 #include <iostream>
 
@@ -21,4 +24,7 @@ public:
 	
 	//All
 	virtual void		setSocket(int socket) = 0;
+	virtual int			getSocket() const = 0;
 };
+
+#endif

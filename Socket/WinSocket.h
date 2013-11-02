@@ -1,4 +1,7 @@
 #pragma once
+#ifndef __WINSOCKET__
+#define __WINSOCKET__
+
 #include "ISocket.h"
 #include <winsock2.h>
 
@@ -23,9 +26,11 @@ public:
 
 	//All
 	virtual void	setSocket(int socket);
+	virtual int			getSocket() const;
 private:
 	SOCKET sock;
 	sockaddr_in	sin;
 	sockaddr_in	sin_s;
 };
+#endif
 
