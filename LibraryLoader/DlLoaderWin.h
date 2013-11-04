@@ -1,6 +1,6 @@
 #pragma once
-#include <windows.h> 
-#include <stdio.h> 
+#include <windows.h>
+#include <stdio.h>
 #include "IDlLoader.h"
 
 template <typename T>
@@ -12,11 +12,11 @@ public:
 	virtual ~DlLoaderWin(void){};
 	bool openLib(std::string const & path)
 	{
-		std::wstring str;
+		std::string str;
 		int	i = 0;
 		while (i != path.size())
 			str += path[i++];
-		if ((this->hinstLib = LoadLibrary(str.c_str())) == NULL)
+		if ((this->hinstLib = LoadLibrary(path.c_str())) == NULL)
 			return false;
 		return true;
 	};

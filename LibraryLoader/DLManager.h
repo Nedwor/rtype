@@ -1,14 +1,14 @@
-#pragma once
+
 #include <string>
 #include <map>
 #include <list>
 #include <iostream>
 
-#ifdef WIN32
+#ifdef _WIN32
 #include "WinLister.h"
 #include "DlLoaderWin.h"
 #endif
-#ifndef WIN32
+#ifndef _WIN32
 #include "UnixLister.h"
 #include "DlLoaderUnix.h"
 #endif
@@ -21,11 +21,11 @@ public:
 	~DLManager(void){};
 	bool LoadAllLibFromPath(std::string const  & path)
 	{
-	#ifdef WIN32
+	#ifdef _WIN32
 		ILister *lister = new WinLister;
 		std::string ext = ".dll";
 	#endif
-	#ifndef WIN32
+	#ifndef _WIN32
 		ILister *lister = new UnixLister;
 		std::string ext = ".so";
 	#endif
@@ -36,14 +36,13 @@ public:
 		if ((list = lister->getFileList(rpath)) == 0)
 			return false;
 		if (list->size() == 0)
-			return true;
-
+		  return true;
 		for (std::list<std::string>::iterator it = list->begin(); it != list->end();++it)
 		{
-				#ifdef WIN32
+				#ifdef _WIN32
 					IDlLoader<T> *loader = new DlLoaderWin<T>;
 				#endif
-				#ifndef WIN32
+				#ifndef _WIN32
 					IDlLoader<T> *loader = new DlLoaderUnix<T>;
 				#endif
 					if (loader->openLib((std::string)path += *it) == true)
@@ -57,9 +56,10 @@ public:
 		}
 		return true;
 	}
+
 	T	getClass(std::string const & name, std::string const &funcName)
 	{
-		std::map<std::string, IDlLoader<T> *>::iterator it;
+		typename std::map<std::string, IDlLoader<T> *>::iterator it;
 		it = this->map.find(name);
 		if (it != this->map.end())
 		{
@@ -70,7 +70,7 @@ public:
 	}
 	bool closeLib(std::string const &name)
 	{
-		std::map<std::string, IDlLoader<T> *>::iterator it;
+		typename std::map<std::string, IDlLoader<T> *>::iterator it;
 		it = this->map.find(name);
 		if (it != this->map.end())
 		{
@@ -83,7 +83,7 @@ public:
 	}
 	void closeAllLib()
 	{
-		std::map<std::string, IDlLoader<T> *>::iterator it;
+		typename std::map<std::string, IDlLoader<T> *>::iterator it;
 		it = this->map.begin();
 		while (it != this->map.end())
 		{

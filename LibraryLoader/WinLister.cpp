@@ -1,7 +1,8 @@
-
-#include "WinLister.h"
 #include <stdio.h>
+#ifdef _WIN32
 #include <windows.h>
+#include "WinLister.h"
+#endif
 
 WinLister::WinLister(void)
 {
@@ -21,11 +22,11 @@ std::list<std::string> *WinLister::getFileList(std::string const &path)
 	str[i] = '\0';
 
 	WIN32_FIND_DATA File;
-    HANDLE hSearch;
+	HANDLE hSearch;
 	std::string s;
 	std::list<std::string > *list = new std::list<std::string>;
 	int l = 0;
-    hSearch = FindFirstFile(str.c_str(), &File);
+    hSearch = FindFirstFile(path.c_str(), &File);
     if (hSearch != INVALID_HANDLE_VALUE)
     {
 		while (File.cFileName[l])
