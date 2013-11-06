@@ -1,0 +1,12 @@
+<players>
+    <player id="0" name="toto" score="666">
+        <friend name="jean" />
+        <friend name="fdf" />
+        <friend name="bistro" />
+	<friend name="my_printf" />
+	<friend name="pong" />
+    </player>
+    <player id="1" name="titi" score="666">
+        <friend name="kul" />
+    </player>
+</players>
