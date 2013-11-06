@@ -3,8 +3,9 @@
         <friend name="jean" />
         <friend name="fdf" />
         <friend name="bistro" />
-	<friend name="my_printf" />
-	<friend name="pong" />
+        <friend name="my_printf" />
+        <friend name="pong" />
+        <friend name="fondel" />
     </player>
     <player id="1" name="titi" score="666">
         <friend name="kul" />

@@ -1,2 +1,2 @@
 all:
-	g++ *.cpp -ltinyxml
+	@g++ *.cpp -o xml_test  -ltinyxml

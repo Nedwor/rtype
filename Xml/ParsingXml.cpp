@@ -97,7 +97,7 @@ std::list<std::string>	*ParsingXml::getPlayerFriends(std::string &playerName)
       for(player = players->FirstChildElement("player"); player; player = player->NextSiblingElement("player"))
           if (player->Attribute("name") == playerName)
 	    break;
-      if (player->Attribute("name") != playerName)
+      if (player == NULL || player->Attribute("name") != playerName)
 	return friends;
       for(TiXmlElement *child = player->FirstChildElement("friend"); child; child = child->NextSiblingElement("friend") )
 	  friends->push_back(child->Attribute("name"));
