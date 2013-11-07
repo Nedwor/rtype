@@ -3,9 +3,9 @@
 #define __WINSOCKET__
 
 #include "ISocket.h"
-#include <winsock2.h>
+//#include <winsock2.h>
 
-#pragma comment(lib, "Ws2_32.lib")
+//#pragma comment(lib, "Ws2_32.lib")
 class WinSocket :
 	public ISocket
 {

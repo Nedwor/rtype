@@ -18,5 +18,111 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ConnexionState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ConnexionState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion1.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion2.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion3.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion4.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion5.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion6.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion7.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion8.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion9.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion10.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion11.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion12.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion13.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion14.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion15.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion16.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion17.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion18.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion19.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion20.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion21.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion22.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion23.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion24.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\TextBoxAddr.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\TextBoxAddrClicked.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\TextBoxName.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\TextBoxNameClicked.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\TextBoxPort.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\bitlow.ttf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\ressources\PresentationConnexion\ConnexionSong.wav">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
