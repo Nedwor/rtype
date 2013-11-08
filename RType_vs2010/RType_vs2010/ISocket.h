@@ -1,14 +1,10 @@
-#ifndef __ISOCKET__
-#define __ISOCKET__
+#pragma once
 
-#include <string.h>
-#include <iostream>
+#include <string>
 
-using namespace std;
 class ISocket
 {
 public:
-	ISocket() {};
 	virtual  ~ISocket(){};
 	//TCP functions
 	virtual bool		initServer(int port) = 0;
@@ -26,5 +22,3 @@ public:
 	virtual void		setSocket(int socket) = 0;
 	virtual int			getSocket() const = 0;
 };
-
-#endif

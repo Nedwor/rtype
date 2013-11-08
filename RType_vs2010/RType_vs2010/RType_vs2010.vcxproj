@@ -82,10 +82,13 @@
   <ItemGroup>
     <ClCompile Include="ConnexionState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="WinSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConnexionState.h" />
+    <ClInclude Include="ISocket.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="WinSocket.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion1.jpg" />

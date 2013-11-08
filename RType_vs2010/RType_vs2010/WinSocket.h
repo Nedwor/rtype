@@ -1,10 +1,12 @@
-#ifndef __WINSOCKET__
-#define __WINSOCKET__
-
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+#pragma once
 #include "ISocket.h"
-#include <winsock2.h>
+#include <WinSock2.h>
+#include <iostream>
 
-#pragma comment(lib, "Ws2_32.lib")
+#pragma comment(lib, "ws2_32.lib")
 class WinSocket :
 	public ISocket
 {
@@ -31,5 +33,4 @@ private:
 	sockaddr_in	sin;
 	sockaddr_in	sin_s;
 };
-#endif
 
