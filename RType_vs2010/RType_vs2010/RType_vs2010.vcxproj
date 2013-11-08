@@ -85,6 +85,7 @@
     <ClCompile Include="WinSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Server\rfc.h" />
     <ClInclude Include="ConnexionState.h" />
     <ClInclude Include="ISocket.h" />
     <ClInclude Include="resource.h" />

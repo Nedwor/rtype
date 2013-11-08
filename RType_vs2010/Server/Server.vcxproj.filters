@@ -30,6 +30,12 @@
     <ClInclude Include="AObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ManageRoom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rfc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ManageRoom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

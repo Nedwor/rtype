@@ -31,8 +31,8 @@ public:
 	virtual int			getSocket() const;
 	std::string	getIp();
 private:
-	SOCKET sock;
 	sockaddr_in	sin;
+	SOCKET sock;
 	sockaddr_in	sin_s;
 };
 #endif

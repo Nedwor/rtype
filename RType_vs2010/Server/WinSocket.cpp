@@ -137,9 +137,17 @@ int			WinSocket::getSocket() const
 std::string WinSocket::getIp()
 {
 		int len = sizeof(this->sin);
+
 		char str[32];
 		char const*s;
-		int ipAddr = this->sin.sin_addr.s_addr;
+		struct sockaddr name;
+		int lens = sizeof(name);
+		if (getpeername(this->sock, &name, &lens) == SOCKET_ERROR)
+			return 0;
+		struct sockaddr_in *in = (struct sockaddr_in*)&name;
+		if (in == NULL)
+			return 0;
+		int ipAddr = in->sin_addr.s_addr;
 		if ((s = InetNtop( AF_INET, &ipAddr, str, 32)) == NULL)
 		{
 			wprintf(L"InetNtop failed with error %u\n", WSAGetLastError());

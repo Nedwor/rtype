@@ -38,6 +38,9 @@
     <ClInclude Include="WinSocket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Server\rfc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion1.jpg">
