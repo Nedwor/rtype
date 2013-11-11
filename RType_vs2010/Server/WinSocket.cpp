@@ -155,3 +155,19 @@ std::string WinSocket::getIp()
 		}
 		return s;
 }
+
+int			WinSocket::recBinary(void *point, int blocksize)
+{
+	WSABUF Databuf;	DWORD receive;	DWORD lflag = 0;	Databuf.len = blocksize + 1;	Databuf.buf = (char *)point;	receive = blocksize;	int err;	int len;	if (((len = WSARecv(this->sock, &Databuf, 1, &receive, &lflag, NULL, NULL)) ==  SOCKET_ERROR ) 			&& (WSA_IO_PENDING != (err = WSAGetLastError())))			{		wprintf(L"recvfailed with error %u\n", WSAGetLastError());		return (-1);	}	return len;
+}
+
+int			WinSocket::sendBinary(void *point, int len)
+{
+	WSABUF Databuf;
+	Databuf.len = len;
+	Databuf.buf = (CHAR * )point;
+
+	if (WSASend(this->sock, &Databuf, 1, &Databuf.len, 0,0,0) == SOCKET_ERROR)
+		return NULL;
+	return 0;
+}

@@ -53,12 +53,14 @@ void	ManageRoom::check_list()
 			if (FD_ISSET(fd, &(this->read)))
 			{
 				std::string buffer;
-				if (socket->recData(buffer, 1024) <= 0)
+				int len;
+				t_TCPHeader header;
+				if ((len = socket->recBinary(&header, 1024)) <= 0)
 				{
 					socket->closeSocket();
 					this->clList.erase(it++);
 				}
-				std::cout << buffer << std::endl;
+				std::cout << len << " buffer = " <<  header.type << " End" << std::endl;
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 #include "WinSocket.h"
 #include "ConnexionState.h"
-
+#include "rfc.h"
 using namespace sf;
 using namespace std;
 
@@ -30,6 +30,9 @@ int main()
 	WSAStartup(MAKEWORD(2,0), &WSAData);
 #endif
 	bool test;
+	t_TCPHeader *header = new t_TCPHeader;
+	header->type = CONNECTION;
+	header->packetSize = 320;
 	test = socket->connectToServer("127.0.0.1", 7273);
 	std::string buffer;
 	if (test == false)
@@ -40,6 +43,8 @@ int main()
 	{
 			socket->recData(buffer, 255);
 			std::cout << "Received" << buffer << std::endl;
+			std::cout << header->packetSize << std::endl;
+			socket->sendBinary(header, sizeof(*header));
 			Sleep(1000000);
 	}
 #ifdef _WIN32

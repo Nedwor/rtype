@@ -13,22 +13,23 @@ class WinSocket :
 {
 public:
 	WinSocket(void);
-	virtual ~WinSocket(void);
+	~WinSocket(void);
 	//TCP functions
-	virtual bool initServer(int port);
-	virtual bool connectToServer(std::string const & host, short port);
-	virtual bool listenSocket(int backlog);
-	virtual ISocket * acceptedConnection();
-	virtual int  recData(std::string & buffer, int blocksize);	virtual int  sendData(std::string const & data);
-
+	bool initServer(int port);
+	bool connectToServer(std::string const & host, short port);
+	bool listenSocket(int backlog);
+	ISocket * acceptedConnection();
+	int  recData(std::string & buffer, int blocksize);	int  sendData(std::string const & data);
+	int			recBinary(void *point, int blocksize);
+	int			sendBinary(void *point, int len);
 	//UDP function
-	virtual bool initUDP(int port);
-	virtual bool closeSocket();
-	virtual int  recDataFrom(std::string & buffer, int blocksize);	virtual int  sendDataTo(std::string const & data, std::string const &host, int port);
+	bool initUDP(int port);
+	bool closeSocket();
+	int  recDataFrom(std::string & buffer, int blocksize);	int  sendDataTo(std::string const & data, std::string const &host, int port);
 
 	//All
-	virtual void	setSocket(int socket);
-	virtual int			getSocket() const;
+	void	setSocket(int socket);
+	int			getSocket() const;
 	std::string	getIp();
 private:
 	sockaddr_in	sin;
