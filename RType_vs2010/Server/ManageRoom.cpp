@@ -3,6 +3,8 @@
 
 ManageRoom::ManageRoom(void)
 {
+	this->TCPActions[CONNECTION] = &ManageRoom::handleConnectGame;
+	this->TCPActions[LIST_GAMES] = &ManageRoom::handleListGames;
 }
 
 
@@ -55,12 +57,20 @@ void	ManageRoom::check_list()
 				std::string buffer;
 				int len;
 				t_TCPHeader header;
-				if ((len = socket->recBinary(&header, 1024)) <= 0)
+				if ((len = socket->recBinary(&header, 1024)) < 0)
 				{
 					socket->closeSocket();
 					this->clList.erase(it++);
 				}
-				std::cout << len << " buffer = " <<  header.type << " End" << std::endl;
+				else
+				{
+					if (this->TCPActions.find(header.type) != this->TCPActions.end())
+					{
+						ptr p;
+						 p = this->TCPActions[header.type];
+						 (this->*p)(&header, *it);
+					}
+				}
 			}
 		}
 	}
@@ -108,4 +118,21 @@ void ManageRoom::lauchServeur(int port)
 #ifdef _WIN32
 	WSACleanup();
 #endif
+}
+
+void	ManageRoom::handleListGames(void *buffer, Client *cl)
+{
+
+}
+
+void	ManageRoom::handleConnectGame(void *buffer, Client *cl)
+{
+	t_TCPConnection *res;
+	ISocket *sock;
+
+	res = (t_TCPConnection *)buffer;
+	cl->setName(res->name);
+	sock = cl->getSocket();
+	cl->setIp(sock->getIp());
+	std::cout << cl->getName() << " avec "<< cl->getIp() << " comme ip" << std::endl;
 }

@@ -21,4 +21,10 @@ typedef struct s_TCPHeader
 	TCP_PACKET_TYPE type;
 }t_TCPHeader;
 
+typedef struct s_TCPConnection
+{
+	t_TCPHeader header;
+	char		name[32];
+}t_TCPConnection;
+
 #endif

@@ -14,11 +14,16 @@ enum TCP_PACKET_TYPE {
 	PACKET_ERROR
 };
 
-
 typedef struct s_TCPHeader
 {
 	short packetSize;
 	TCP_PACKET_TYPE type;
 }t_TCPHeader;
+
+typedef struct s_TCPConnection
+{
+	t_TCPHeader header;
+	char		name[32];
+}t_TCPConnection;
 
 #endif

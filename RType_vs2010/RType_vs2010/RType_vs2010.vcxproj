@@ -85,10 +85,10 @@
     <ClCompile Include="WinSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Server\rfc.h" />
     <ClInclude Include="ConnexionState.h" />
     <ClInclude Include="ISocket.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="rfc.h" />
     <ClInclude Include="WinSocket.h" />
   </ItemGroup>
   <ItemGroup>

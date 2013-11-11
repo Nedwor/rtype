@@ -38,7 +38,7 @@
     <ClInclude Include="WinSocket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Server\rfc.h">
+    <ClInclude Include="rfc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
