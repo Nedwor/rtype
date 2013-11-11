@@ -1,10 +1,9 @@
-﻿Build started 11/11/2013 16:04:34.
+﻿Build started 11/11/2013 19:41:53.
      1>Project "C:\Users\derval_g\Documents\Git\rtype\RType_vs2010\RType_vs2010\RType_vs2010.vcxproj" on node 3 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Release\RType_vs2010.lastbuildstate".
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppClean.targets(74,5): warning : The process cannot access the file 'C:\USERS\DERVAL_G\DOCUMENTS\GIT\RTYPE\RTYPE_VS2010\RTYPE_VS2010\RELEASE\CONNEXIONSTATE.OBJ' because it is being used by another process.
        InitializeBuildStatus:
-         Touching "Release\RType_vs2010.unsuccessfulbuild".
+         Creating "Release\RType_vs2010.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Users\derval_g\Documents\Git\rtype\RType_vs2010\\Release\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D SFML_STATIC /D WIN32 /D NDEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ConnexionState.cpp main.cpp WinSocket.cpp
          ConnexionState.cpp
@@ -38,4 +37,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.30
+Time Elapsed 00:00:03.88

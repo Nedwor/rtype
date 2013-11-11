@@ -5,6 +5,8 @@ ManageRoom::ManageRoom(void)
 {
 	this->TCPActions[CONNECTION] = &ManageRoom::handleConnectGame;
 	this->TCPActions[LIST_GAMES] = &ManageRoom::handleListGames;
+	this->TCPActions[CREATE_GAME] = &ManageRoom::handleCreateGame;
+	this->currentGameId = 1;
 }
 
 
@@ -120,9 +122,63 @@ void ManageRoom::lauchServeur(int port)
 #endif
 }
 
+void	ManageRoom::handleCreateGame(void *buffer, Client *cl)
+{
+	t_TCPCreate *create;
+	create = (t_TCPCreate *)buffer;
+
+	Room *room = new Room;
+
+	room->setGameId(this->currentGameId++);
+	room->setNbMax(create->nb_max);
+	char id = room->addClient(cl);
+	this->listRoom.push_front(room);
+	
+	int i = 0;
+	int len;
+	const char *str = cl->getName().c_str();
+	ISocket *sock;
+	t_TCPPlayer Player;
+
+	while (str[i])
+		Player.name[i] = str[i++];
+	Player.player_id = id;
+	Player.status = NOT_READY;
+	Player.header.packetSize = sizeof(Player);
+	Player.header.type = PLAYER;
+
+	sock = cl->getSocket();
+	if ((len = sock->sendBinary(&Player, sizeof(Player))) < 0)
+		{
+			std::cout << "Error while sending Create" << std::endl;
+		}
+}
+
 void	ManageRoom::handleListGames(void *buffer, Client *cl)
 {
+	t_TCPGame	Game;
+	int			len;
+	ISocket *sock;
+	sock = cl->getSocket();
 
+	Game.header.packetSize = sizeof(Game);
+	Game.header.type = GAME; 
+	for (std::list<Room *>::iterator it = this->listRoom.begin(); it != this->listRoom.end(); ++it)
+	{
+		Game.nb_ingame = (*it)->getNbIngame();
+		Game.nb_max = (*it)->getNbMax();
+		Game.id_game = (*it)->getGameId();
+		if ((len = sock->sendBinary(&Game, sizeof(Game))) < 0)
+		{
+			std::cout << "Error while sending Game" << std::endl;
+		}
+	}
+	Game.header.packetSize = sizeof(Game.header);
+	Game.header.type = END_LIST_GAMES;
+	if ((len = sock->sendBinary(&Game, sizeof(Game.header))) < 0)
+		{
+			std::cout << "Error while sending End Game" << std::endl;
+		}
 }
 
 void	ManageRoom::handleConnectGame(void *buffer, Client *cl)
@@ -135,4 +191,19 @@ void	ManageRoom::handleConnectGame(void *buffer, Client *cl)
 	sock = cl->getSocket();
 	cl->setIp(sock->getIp());
 	std::cout << cl->getName() << " avec "<< cl->getIp() << " comme ip" << std::endl;
+	if (!cl->getName().empty())
+	{
+		t_TCPHeader Header;
+		Header.type = ESTABLISHED;
+		Header.packetSize = sizeof(Header);
+		this->server->sendBinary(&Header, sizeof(Header));
+	}
+	else
+	{
+		t_TCPError Header;
+		Header.header.type = PACKET_ERROR;
+		Header.header.packetSize = sizeof(Header);
+		Header.error = LOGIN;
+		this->server->sendBinary(&Header, sizeof(Header));
+	}
 }

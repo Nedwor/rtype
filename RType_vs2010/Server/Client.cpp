@@ -38,3 +38,14 @@ void Client::setSocket(ISocket* sock)
 	this->socket = sock;
 }
 
+void Client::setIdPlayer(char id)
+{
+	this->id_player = id;
+}
+
+short Client::getIdPlayer() const
+{
+	return this->id_player;
+}
+
+

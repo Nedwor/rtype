@@ -5,6 +5,7 @@
 #include "Client.h"
 #include "rfc.h"
 #include <map>
+#include "Room.h"
 
 class ManageRoom
 {
@@ -20,10 +21,12 @@ public:
 	void	handleConnection(void *buffer, Client *cl);
 	void	handleListGames(void *buffer, Client *cl);
 	void	handleConnectGame(void *buffer, Client *cl);
+	void	handleCreateGame(void *buffer, Client *cl);
 private:
 	std::list<Client *> clList;
+	std::list<Room *> listRoom;
 	fd_set read;
 	ISocket *server;
 	std::map<TCP_PACKET_TYPE, ptr> TCPActions;
+	int currentGameId;
 };
-

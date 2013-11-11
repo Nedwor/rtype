@@ -79,6 +79,7 @@
     <ClInclude Include="ISocket.h" />
     <ClInclude Include="ManageRoom.h" />
     <ClInclude Include="rfc.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="UnixSocket.h" />
     <ClInclude Include="WinSocket.h" />
   </ItemGroup>
@@ -87,6 +88,7 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManageRoom.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="UnixSocket.cpp" />
     <ClCompile Include="WinSocket.cpp" />
   </ItemGroup>

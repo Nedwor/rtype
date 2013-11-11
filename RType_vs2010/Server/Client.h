@@ -20,9 +20,12 @@ public:
 	std::string getIp() const;
 	ISocket *getSocket() const;
 	void setSocket(ISocket *sock);
+	short getIdPlayer() const;
+	void setIdPlayer(char id);
 private:
 	std::string ip;
 	std::string name;
 	ISocket *socket;
+	char id_player;
 };
 
