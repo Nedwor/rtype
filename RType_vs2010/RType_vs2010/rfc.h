@@ -68,4 +68,75 @@ typedef struct s_TCPPlayer
 	char	player_id;
 }t_TCPPlayer;
 
+//UDP
+
+enum UDP_PACKET_TYPE{
+	SPAWN,
+	DESTROY,
+	MOVE,
+	SCORE,
+	LIFE,
+	RETRIEVE
+};
+
+enum STATEMENT{
+	DEAD,
+	REVIVE,
+	OVER
+};
+
+typedef struct s_UDPHeader
+{
+	long time;
+	UDP_PACKET_TYPE type;
+}t_UDPHeader;
+
+typedef struct s_UDPSpawn
+{
+	t_UDPHeader header;
+	int			id_packet;
+	int			id_ressource;
+	int			id_object;
+	short		x;
+	short		y;
+	short		Vx;
+	short		Vy;
+}t_UDPSpawn;
+
+typedef struct s_UDPDestroy
+{
+	t_UDPHeader header;
+	int			id_packet;
+	int			id_object;
+}t_UDPDestroy;
+
+typedef struct s_UDPMove
+{
+	t_UDPHeader header;
+	int			id_object;
+	short		x;
+	short		y;
+	short		Vx;
+	short		Vy;
+}t_UDPMove;
+
+typedef struct s_UDPScore
+{
+	t_UDPHeader header;
+	char		id_player;
+	int			score;
+}t_UDPScore;
+
+typedef struct s_UDPLife
+{
+	t_UDPHeader header;
+	STATEMENT	state;
+}t_UDPLife;
+
+typedef struct s_UDPRetrieve
+{
+	t_UDPHeader header;
+	int	id_packet;
+}t_UDPRetrieve;
+
 #endif

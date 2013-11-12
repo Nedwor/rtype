@@ -1,5 +1,5 @@
-﻿Build started 11/11/2013 19:41:53.
-     1>Project "C:\Users\derval_g\Documents\Git\rtype\RType_vs2010\RType_vs2010\RType_vs2010.vcxproj" on node 3 (rebuild target(s)).
+﻿Build started 12/11/2013 11:18:42.
+     1>Project "C:\Users\derval_g\Documents\Git\rtype\RType_vs2010\RType_vs2010\RType_vs2010.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Release\RType_vs2010.lastbuildstate".
        InitializeBuildStatus:
@@ -37,4 +37,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.88
+Time Elapsed 00:00:03.73

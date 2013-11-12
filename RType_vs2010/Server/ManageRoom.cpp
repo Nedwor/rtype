@@ -196,7 +196,7 @@ void	ManageRoom::handleConnectGame(void *buffer, Client *cl)
 		t_TCPHeader Header;
 		Header.type = ESTABLISHED;
 		Header.packetSize = sizeof(Header);
-		this->server->sendBinary(&Header, sizeof(Header));
+		sock->sendBinary(&Header, sizeof(Header));
 	}
 	else
 	{
@@ -204,6 +204,6 @@ void	ManageRoom::handleConnectGame(void *buffer, Client *cl)
 		Header.header.type = PACKET_ERROR;
 		Header.header.packetSize = sizeof(Header);
 		Header.error = LOGIN;
-		this->server->sendBinary(&Header, sizeof(Header));
+		sock->sendBinary(&Header, sizeof(Header));
 	}
 }

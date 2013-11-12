@@ -14,7 +14,7 @@ int main()
 	t_TCPConnection header;
 	header.header.type = CONNECTION;
 	header.header.packetSize = 320;
-	header.name[0] = 'T';
+	header.name[0] = '\0';
 	header.name[1] = 'e';
 	header.name[2] = 's';
 	header.name[3] = 't';
@@ -31,6 +31,8 @@ int main()
 			std::cout << "Received" << buffer << std::endl;
 			std::cout << header.header.packetSize << std::endl;
 			socket->sendBinary(&header, sizeof(header));
+			socket->recBinary(&header.header, 1024);
+			std::cout << "Type " << header.header.type << std::endl;
 			Sleep(1000000);
 	}
 #ifdef _WIN32
