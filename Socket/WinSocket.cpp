@@ -10,22 +10,19 @@ WinSocket::~WinSocket(void)
 
 bool	WinSocket::initUDP(int port)
 {
-	if ((this->sock = WSASocket(AF_INET, SOCK_DGRAM, IPPROTO_UDP, NULL, 0, 0)) == INVALID_SOCKET) 
+	if ((this->sock = WSASocket(AF_INET, SOCK_DGRAM, IPPROTO_UDP, NULL, 0, 0)) == INVALID_SOCKET)
 		return false;
 	this->sin.sin_addr.s_addr = inet_addr(INADDR_ANY);
 	this->sin.sin_family = AF_INET;
 	this->sin.sin_port = htons(port);
 	if (bind(this->sock, (SOCKADDR *)&this->sin, sizeof(this->sin)) == SOCKET_ERROR)
-	{
-		printf("Bind error\n");
 		return false;
-	}
 	return true;
 }
 
 bool	WinSocket::initServer(int port)
 {
-	if ((this->sock = WSASocket(AF_INET, SOCK_STREAM, IPPROTO_TCP, NULL, 0, 0)) == INVALID_SOCKET) 
+	if ((this->sock = WSASocket(AF_INET, SOCK_STREAM, IPPROTO_TCP, NULL, 0, 0)) == INVALID_SOCKET)
 		return false;
 	this->sin.sin_addr.s_addr = inet_addr(INADDR_ANY);
 	this->sin.sin_family = AF_INET;
@@ -37,7 +34,7 @@ bool	WinSocket::initServer(int port)
 
 bool WinSocket::connectToServer(std::string const & host, short port)
 {
-	if ((this->sock = WSASocket(AF_INET, SOCK_STREAM, IPPROTO_TCP, NULL, 0, 0)) == INVALID_SOCKET) 
+	if ((this->sock = WSASocket(AF_INET, SOCK_STREAM, IPPROTO_TCP, NULL, 0, 0)) == INVALID_SOCKET)
 		return false;
 	this->sin_s.sin_addr.s_addr = inet_addr(host.c_str());
 	this->sin_s.sin_family = AF_INET;
@@ -55,7 +52,21 @@ bool WinSocket::listenSocket(int backlog)
 	return true;
 }
 
-int WinSocket::recData(std::string & buffer , int blocksize){	WSABUF Databuf;	DWORD receive;	Databuf.len = blocksize + 1;	Databuf.buf = "";	receive = blocksize;	if (WSARecv(this->sock, &Databuf, 1, &receive, 0, 0, 0 ==  SOCKET_ERROR))		return (-1);	buffer = Databuf.buf;	return 0;}int WinSocket::sendData(std::string const & data)
+int WinSocket::recData(std::string & buffer , int blocksize)
+{
+	WSABUF Databuf;
+	DWORD receive;
+
+	Databuf.len = blocksize + 1;
+	Databuf.buf = "";
+	receive = blocksize;
+	if (WSARecv(this->sock, &Databuf, 1, &receive, 0, 0, 0 ==  SOCKET_ERROR))
+		return (-1);
+	buffer = Databuf.buf;
+	return 0;
+}
+
+int WinSocket::sendData(std::string const & data)
 {
 	WSABUF Databuf;
 	Databuf.len = data.length();
@@ -74,11 +85,27 @@ bool WinSocket::closeSocket()
 	return false;
 }
 
-int WinSocket::recDataFrom(std::string & buffer , int blocksize){	WSABUF Databuf;	DWORD receive;	struct sockaddr_in in;	Databuf.len = blocksize + 1;	Databuf.buf = "";	receive = blocksize;	int size = sizeof(in);	if (WSARecvFrom(this->sock, &Databuf, 1, &receive, 0, (SOCKADDR *)& in, &size, 0, 0) ==  SOCKET_ERROR)		return (-1);	buffer = Databuf.buf;	return 0;}int WinSocket::sendDataTo(std::string const & data,std::string const &host, int port)
+int WinSocket::recDataFrom(std::string & buffer , int blocksize)
+{
+	WSABUF Databuf;
+	DWORD receive;
+	struct sockaddr_in in;
+
+	Databuf.len = blocksize + 1;
+	Databuf.buf = "";
+	receive = blocksize;
+	int size = sizeof(in);
+	if (WSARecvFrom(this->sock, &Databuf, 1, &receive, 0, (SOCKADDR *)& in, &size, 0, 0) ==  SOCKET_ERROR)
+		return (-1);
+	buffer = Databuf.buf;
+	return 0;
+}
+
+int WinSocket::sendDataTo(std::string const & data,std::string const &host, int port)
 {
 	struct sockaddr_in that;
 	WSABUF Databuf;
-	
+
 	Databuf.len = data.length();
 	Databuf.buf = (CHAR * )data.c_str();
 	that.sin_family = AF_INET;
@@ -108,7 +135,7 @@ ISocket * WinSocket::acceptedConnection()
 	return (nsocket);
 }
 
-int			WinSocket::getSocket() const
+int	WinSocket::getSocket() const
 {
 	return this->sock;
 };

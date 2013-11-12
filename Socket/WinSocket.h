@@ -17,20 +17,21 @@ public:
 	virtual bool connectToServer(std::string const & host, short port);
 	virtual bool listenSocket(int backlog);
 	virtual ISocket * acceptedConnection();
-	virtual int  recData(std::string & buffer, int blocksize);	virtual int  sendData(std::string const & data);
+	virtual int  recData(std::string & buffer, int blocksize);
+	virtual int  sendData(std::string const & data);
 
-	//UDP function
+	//UDP functions
 	virtual bool initUDP(int port);
 	virtual bool closeSocket();
-	virtual int  recDataFrom(std::string & buffer, int blocksize);	virtual int  sendDataTo(std::string const & data, std::string const &host, int port);
+	virtual int  recDataFrom(std::string & buffer, int blocksize);
+	virtual int  sendDataTo(std::string const & data, std::string const &host, int port);
 
 	//All
 	virtual void	setSocket(int socket);
-	virtual int			getSocket() const;
+	virtual int	getSocket() const;
 private:
 	SOCKET sock;
 	sockaddr_in	sin;
 	sockaddr_in	sin_s;
 };
 #endif
-
