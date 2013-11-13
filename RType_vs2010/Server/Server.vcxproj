@@ -74,6 +74,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Thread\IThread.h" />
+    <ClInclude Include="..\..\Thread\UnixThread.h" />
+    <ClInclude Include="..\..\Thread\WinThread.h" />
     <ClInclude Include="AObject.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="ISocket.h" />
@@ -84,8 +87,12 @@
     <ClInclude Include="WinSocket.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Thread\UnixThread.cpp" />
+    <ClCompile Include="..\..\Thread\WinThread.cpp" />
     <ClCompile Include="AObject.cpp" />
-    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="Client.cpp">
+      <DeploymentContent>false</DeploymentContent>
+    </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManageRoom.cpp" />
     <ClCompile Include="Room.cpp" />

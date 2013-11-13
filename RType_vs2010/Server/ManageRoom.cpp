@@ -50,7 +50,8 @@ void	ManageRoom::check_list()
 	{
 		ISocket *socket;
 		socket = (*it)->getSocket();
-		
+		char *buf = new char[1025];
+
 		if (socket != NULL)
 		{
 			int fd = socket->getSocket();
@@ -58,24 +59,42 @@ void	ManageRoom::check_list()
 			{
 				std::string buffer;
 				int len;
-				t_TCPHeader header;
-				if ((len = socket->recBinary(&header, 1024)) < 0)
+				t_TCPHeader *header;
+				if ((len = socket->recBinary(buf, 1024)) < 0)
 				{
 					socket->closeSocket();
 					this->clList.erase(it++);
 				}
 				else
 				{
-					if (this->TCPActions.find(header.type) != this->TCPActions.end())
+					header = (t_TCPHeader *)buf;
+					if (this->TCPActions.find(header->type) != this->TCPActions.end())
 					{
-						ptr p;
-						 p = this->TCPActions[header.type];
-						 (this->*p)(&header, *it);
+	        			 ptr p;
+						 t_TCPConnection *con;
+						 con = (t_TCPConnection *)buf;
+						 p = this->TCPActions[header->type];
+						 if ((*it)->getName().empty() == 1 && header->type == CONNECTION)
+							(this->*p)(buf, *it);
+						 else if (!(*it)->getName().empty() == 1)
+							 (this->*p)(buf, *it);
+						 else
+							this->sendErrorPacket(socket, NOT_LOGGED);
 					}
 				}
 			}
 		}
 	}
+}
+
+void ManageRoom::sendErrorPacket(ISocket *socket, ERROR_TYPE err)
+{
+	t_TCPError header;
+
+	header.header.type = PACKET_ERROR;
+	header.header.packetSize = sizeof(header);
+	header.error = err;
+	socket->sendBinary(&header, sizeof(header));
 }
 
 void ManageRoom::lauchServeur(int port)
@@ -109,7 +128,6 @@ void ManageRoom::lauchServeur(int port)
 				Client *cl = new Client;
 				cl->setSocket(sock);
 				clList.push_front(cl);
-				sock->sendData("Bienvenue\n");
 			}
 			else
 				std::cout << "Refusé" << std::endl;
@@ -140,7 +158,9 @@ void	ManageRoom::handleCreateGame(void *buffer, Client *cl)
 	ISocket *sock;
 	t_TCPPlayer Player;
 
+	//On prépare le packet pour prévenir le joueur de sa connection à la partie créée
 	while (str[i])
+	std::cout << cl->getName() << " avec "<< cl->getIp() << " comme ip" << std::endl;
 		Player.name[i] = str[i++];
 	Player.player_id = id;
 	Player.status = NOT_READY;
@@ -149,9 +169,8 @@ void	ManageRoom::handleCreateGame(void *buffer, Client *cl)
 
 	sock = cl->getSocket();
 	if ((len = sock->sendBinary(&Player, sizeof(Player))) < 0)
-		{
-			std::cout << "Error while sending Create" << std::endl;
-		}
+		std::cout << "Error while sending Create" << std::endl;
+
 }
 
 void	ManageRoom::handleListGames(void *buffer, Client *cl)
@@ -169,28 +188,24 @@ void	ManageRoom::handleListGames(void *buffer, Client *cl)
 		Game.nb_max = (*it)->getNbMax();
 		Game.id_game = (*it)->getGameId();
 		if ((len = sock->sendBinary(&Game, sizeof(Game))) < 0)
-		{
 			std::cout << "Error while sending Game" << std::endl;
-		}
 	}
 	Game.header.packetSize = sizeof(Game.header);
 	Game.header.type = END_LIST_GAMES;
 	if ((len = sock->sendBinary(&Game, sizeof(Game.header))) < 0)
-		{
 			std::cout << "Error while sending End Game" << std::endl;
-		}
 }
 
 void	ManageRoom::handleConnectGame(void *buffer, Client *cl)
 {
 	t_TCPConnection *res;
 	ISocket *sock;
-
+	std::string name;
 	res = (t_TCPConnection *)buffer;
 	cl->setName(res->name);
+	std::cout << res->name << std::endl;
 	sock = cl->getSocket();
 	cl->setIp(sock->getIp());
-	std::cout << cl->getName() << " avec "<< cl->getIp() << " comme ip" << std::endl;
 	if (!cl->getName().empty())
 	{
 		t_TCPHeader Header;
