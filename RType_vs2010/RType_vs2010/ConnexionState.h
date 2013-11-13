@@ -1,57 +1,46 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include "WinSocket.h"
-#include "rfc.h"
-#include <stack>
-#include <iostream>
-#include <sstream>
-#include <windows.h>
 
-using namespace sf;
-using namespace std;
+#include "IGameState.h"
 
 class ConnexionState;
 
 typedef void (ConnexionState::*CsPtrFunc)(int);
 
-class ConnexionState
+class ConnexionState : public IGameState
 {
 private:
-	stack<Sprite*>						BgVec;
-	Texture								*Planete;
-	Sprite								*Background;
-	Music								ConnexionMusic;
-	Sprite								*AddrBoxS;
-	Texture								*AddrBoxT;
-	Texture								*AddrBoxHoverT;
-	string								AddrString;
-	Text								*AddrText;
-	Sprite								*PortBoxS;
-	Texture								*PortBoxT;
-	Texture								*PortBoxHoverT;
-	string								PortString;
-	Text								*PortText;
-	Sprite								*NameBoxS;
-	Texture								*NameBoxT;
-	Texture								*NameBoxHoverT;
-	Sprite								*ConnexButtonS;
-	Texture								*ConnexButtonT;
-	Texture								*ConnexButtonHoverT;
-	string								NameString;
-	Text								*NameText;
-	Font								*font;
+	std::stack<sf::Sprite*>						BgVec;
+	sf::Texture								*Planete;
+	sf::Sprite								*Background;
+	sf::Music								ConnexionMusic;
+	sf::Sprite								*AddrBoxS;
+	sf::Texture								*AddrBoxT;
+	sf::Texture								*AddrBoxHoverT;
+	std::string								AddrString;
+	sf::Text								*AddrText;
+	sf::Sprite								*PortBoxS;
+	sf::Texture								*PortBoxT;
+	sf::Texture								*PortBoxHoverT;
+	std::string								PortString;
+	sf::Text								*PortText;
+	sf::Sprite								*NameBoxS;
+	sf::Texture								*NameBoxT;
+	sf::Texture								*NameBoxHoverT;
+	sf::Sprite								*ConnexButtonS;
+	sf::Texture								*ConnexButtonT;
+	sf::Texture								*ConnexButtonHoverT;
+	std::string								NameString;
+	sf::Text								*NameText;
+	sf::Font								*font;
 	t_TCPConnection						*header;
-	ISocket								*socket;
+	//ISocket								*socket;
 	bool								ConnexTest;
 	bool								RecordAddr;
 	bool								RecordPort;
 	bool								RecordName;
 	bool								MusicOn;
 	int									i;
-	map<Keyboard::Key, CsPtrFunc>       _keyMap;
+	std::map<sf::Keyboard::Key, CsPtrFunc>       _keyMap;
 
 	void		addA(int);
 	void		addB(int);
@@ -95,12 +84,12 @@ public:
 	ConnexionState(void);
 	~ConnexionState(void);
 
-	void		Draw(RenderWindow *);
-	void		Execute(RenderWindow *);
-	void		Presentation(RenderWindow *);
-	bool		TryToConnect();
-	void		addCharToAddr(Keyboard::Key);
-	void		addCharToPort(Keyboard::Key);
-	void		addCharToName(Keyboard::Key);
+	virtual void		draw(sf::RenderWindow&);
+	virtual void		execute(sf::RenderWindow&);
+	void		presentation(sf::RenderWindow&);
+	bool		tryToConnect();
+	void		addCharToAddr(sf::Keyboard::Key);
+	void		addCharToPort(sf::Keyboard::Key);
+	void		addCharToName(sf::Keyboard::Key);
 	void		addChar(int, char);
 };

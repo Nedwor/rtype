@@ -2,74 +2,74 @@
 
 ConnexionState::ConnexionState()
 {
-	this->_keyMap[Keyboard::A] = &ConnexionState::addA;
-	this->_keyMap[Keyboard::B] = &ConnexionState::addB;
-	this->_keyMap[Keyboard::C] = &ConnexionState::addC;
-	this->_keyMap[Keyboard::D] = &ConnexionState::addD;
-	this->_keyMap[Keyboard::E] = &ConnexionState::addE;
-	this->_keyMap[Keyboard::F] = &ConnexionState::addF;
-	this->_keyMap[Keyboard::G] = &ConnexionState::addG;
-	this->_keyMap[Keyboard::H] = &ConnexionState::addH;
-	this->_keyMap[Keyboard::I] = &ConnexionState::addI;
-	this->_keyMap[Keyboard::J] = &ConnexionState::addJ;
-	this->_keyMap[Keyboard::K] = &ConnexionState::addK;
-	this->_keyMap[Keyboard::L] = &ConnexionState::addL;
-	this->_keyMap[Keyboard::M] = &ConnexionState::addM;
-	this->_keyMap[Keyboard::N] = &ConnexionState::addN;
-	this->_keyMap[Keyboard::O] = &ConnexionState::addO;
-	this->_keyMap[Keyboard::P] = &ConnexionState::addP;
-	this->_keyMap[Keyboard::Q] = &ConnexionState::addQ;
-	this->_keyMap[Keyboard::R] = &ConnexionState::addR;
-	this->_keyMap[Keyboard::S] = &ConnexionState::addS;
-	this->_keyMap[Keyboard::T] = &ConnexionState::addT;
-	this->_keyMap[Keyboard::U] = &ConnexionState::addU;
-	this->_keyMap[Keyboard::V] = &ConnexionState::addV;
-	this->_keyMap[Keyboard::W] = &ConnexionState::addW;
-	this->_keyMap[Keyboard::X] = &ConnexionState::addD;
-	this->_keyMap[Keyboard::Y] = &ConnexionState::addY;
-	this->_keyMap[Keyboard::Z] = &ConnexionState::addZ;
-	this->_keyMap[Keyboard::Num1] = &ConnexionState::add1;
-	this->_keyMap[Keyboard::Num2] = &ConnexionState::add2;
-	this->_keyMap[Keyboard::Num3] = &ConnexionState::add3;
-	this->_keyMap[Keyboard::Num4] = &ConnexionState::add4;
-	this->_keyMap[Keyboard::Num5] = &ConnexionState::add5;
-	this->_keyMap[Keyboard::Num6] = &ConnexionState::add6;
-	this->_keyMap[Keyboard::Num7] = &ConnexionState::add7;
-	this->_keyMap[Keyboard::Num8] = &ConnexionState::add8;
-	this->_keyMap[Keyboard::Num9] = &ConnexionState::add9;
-	this->_keyMap[Keyboard::Num0] = &ConnexionState::add0;
-	this->_keyMap[Keyboard::Numpad1] = &ConnexionState::add1;
-	this->_keyMap[Keyboard::Numpad2] = &ConnexionState::add2;
-	this->_keyMap[Keyboard::Numpad3] = &ConnexionState::add3;
-	this->_keyMap[Keyboard::Numpad4] = &ConnexionState::add4;
-	this->_keyMap[Keyboard::Numpad5] = &ConnexionState::add5;
-	this->_keyMap[Keyboard::Numpad6] = &ConnexionState::add6;
-	this->_keyMap[Keyboard::Numpad7] = &ConnexionState::add7;
-	this->_keyMap[Keyboard::Numpad8] = &ConnexionState::add8;
-	this->_keyMap[Keyboard::Numpad9] = &ConnexionState::add9;
-	this->_keyMap[Keyboard::Numpad0] = &ConnexionState::add0;
-	this->_keyMap[Keyboard::Period] = &ConnexionState::addPoint;
+	this->_keyMap[sf::Keyboard::A] = &ConnexionState::addA;
+	this->_keyMap[sf::Keyboard::B] = &ConnexionState::addB;
+	this->_keyMap[sf::Keyboard::C] = &ConnexionState::addC;
+	this->_keyMap[sf::Keyboard::D] = &ConnexionState::addD;
+	this->_keyMap[sf::Keyboard::E] = &ConnexionState::addE;
+	this->_keyMap[sf::Keyboard::F] = &ConnexionState::addF;
+	this->_keyMap[sf::Keyboard::G] = &ConnexionState::addG;
+	this->_keyMap[sf::Keyboard::H] = &ConnexionState::addH;
+	this->_keyMap[sf::Keyboard::I] = &ConnexionState::addI;
+	this->_keyMap[sf::Keyboard::J] = &ConnexionState::addJ;
+	this->_keyMap[sf::Keyboard::K] = &ConnexionState::addK;
+	this->_keyMap[sf::Keyboard::L] = &ConnexionState::addL;
+	this->_keyMap[sf::Keyboard::M] = &ConnexionState::addM;
+	this->_keyMap[sf::Keyboard::N] = &ConnexionState::addN;
+	this->_keyMap[sf::Keyboard::O] = &ConnexionState::addO;
+	this->_keyMap[sf::Keyboard::P] = &ConnexionState::addP;
+	this->_keyMap[sf::Keyboard::Q] = &ConnexionState::addQ;
+	this->_keyMap[sf::Keyboard::R] = &ConnexionState::addR;
+	this->_keyMap[sf::Keyboard::S] = &ConnexionState::addS;
+	this->_keyMap[sf::Keyboard::T] = &ConnexionState::addT;
+	this->_keyMap[sf::Keyboard::U] = &ConnexionState::addU;
+	this->_keyMap[sf::Keyboard::V] = &ConnexionState::addV;
+	this->_keyMap[sf::Keyboard::W] = &ConnexionState::addW;
+	this->_keyMap[sf::Keyboard::X] = &ConnexionState::addD;
+	this->_keyMap[sf::Keyboard::Y] = &ConnexionState::addY;
+	this->_keyMap[sf::Keyboard::Z] = &ConnexionState::addZ;
+	this->_keyMap[sf::Keyboard::Num1] = &ConnexionState::add1;
+	this->_keyMap[sf::Keyboard::Num2] = &ConnexionState::add2;
+	this->_keyMap[sf::Keyboard::Num3] = &ConnexionState::add3;
+	this->_keyMap[sf::Keyboard::Num4] = &ConnexionState::add4;
+	this->_keyMap[sf::Keyboard::Num5] = &ConnexionState::add5;
+	this->_keyMap[sf::Keyboard::Num6] = &ConnexionState::add6;
+	this->_keyMap[sf::Keyboard::Num7] = &ConnexionState::add7;
+	this->_keyMap[sf::Keyboard::Num8] = &ConnexionState::add8;
+	this->_keyMap[sf::Keyboard::Num9] = &ConnexionState::add9;
+	this->_keyMap[sf::Keyboard::Num0] = &ConnexionState::add0;
+	this->_keyMap[sf::Keyboard::Numpad1] = &ConnexionState::add1;
+	this->_keyMap[sf::Keyboard::Numpad2] = &ConnexionState::add2;
+	this->_keyMap[sf::Keyboard::Numpad3] = &ConnexionState::add3;
+	this->_keyMap[sf::Keyboard::Numpad4] = &ConnexionState::add4;
+	this->_keyMap[sf::Keyboard::Numpad5] = &ConnexionState::add5;
+	this->_keyMap[sf::Keyboard::Numpad6] = &ConnexionState::add6;
+	this->_keyMap[sf::Keyboard::Numpad7] = &ConnexionState::add7;
+	this->_keyMap[sf::Keyboard::Numpad8] = &ConnexionState::add8;
+	this->_keyMap[sf::Keyboard::Numpad9] = &ConnexionState::add9;
+	this->_keyMap[sf::Keyboard::Numpad0] = &ConnexionState::add0;
+	this->_keyMap[sf::Keyboard::Period] = &ConnexionState::addPoint;
 
 	this->ConnexionMusic.openFromFile("..\\..\\..\\ConnexionSong.wav");
-	this->font = new Font;
+	this->font = new sf::Font;
 	this->MusicOn = false;
 
-	this->ConnexButtonT = new Texture;
-	this->ConnexButtonS = new Sprite;
+	this->ConnexButtonT = new sf::Texture;
+	this->ConnexButtonS = new sf::Sprite;
 
-	this->AddrText = new Text;
-	this->AddrBoxT = new Texture;
-	this->AddrBoxS = new Sprite;
+	this->AddrText = new sf::Text;
+	this->AddrBoxT = new sf::Texture;
+	this->AddrBoxS = new sf::Sprite;
 	this->RecordAddr = false;
 
-	this->PortText = new Text;
-	this->PortBoxT = new Texture;
-	this->PortBoxS = new Sprite;
+	this->PortText = new sf::Text;
+	this->PortBoxT = new sf::Texture;
+	this->PortBoxS = new sf::Sprite;
 	this->RecordPort = false;
 
-	this->NameText = new Text;
-	this->NameBoxT = new Texture;
-	this->NameBoxS = new Sprite;
+	this->NameText = new sf::Text;
+	this->NameBoxT = new sf::Texture;
+	this->NameBoxS = new sf::Sprite;
 	this->RecordName = false;
 	this->font->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\bitlow.ttf");
 	//TODO (pouvoir changer la taille de la fenetre )
@@ -77,7 +77,7 @@ ConnexionState::ConnexionState()
 	this->AddrBoxS->setPosition((1024 / 2) - 250, ((763 / 3) * 2) - 51);
 	this->AddrText->setPosition(((1024 / 2) - 250) + 20, ((763 / 3) * 2) - 46);
 	this->AddrText->setCharacterSize(25);
-	this->AddrText->setColor(Color::White);
+	this->AddrText->setColor(sf::Color::White);
 	this->AddrText->setFont(*this->font);
 	this->AddrBoxT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\TextBoxAddr.jpg");
 	this->AddrBoxS->setTexture(*this->AddrBoxT, false);
@@ -85,7 +85,7 @@ ConnexionState::ConnexionState()
 	this->PortBoxS->setPosition((1024 / 2) + 100, ((763 / 3) * 2) - 51);
 	this->PortText->setPosition(((1024 / 2) + 100) + 20, ((763 / 3) * 2) - 47);
 	this->PortText->setCharacterSize(25);
-	this->PortText->setColor(Color::White);
+	this->PortText->setColor(sf::Color::White);
 	this->PortText->setFont(*this->font);
 	this->PortBoxT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\TextBoxPort.jpg");
 	this->PortBoxS->setTexture(*this->PortBoxT, false);
@@ -93,7 +93,7 @@ ConnexionState::ConnexionState()
 	this->NameBoxS->setPosition((1024 / 2) - 250, ((763 / 3) * 2) + 6);
 	this->NameText->setPosition(((1024 / 2) - 250) + 20, ((763 / 3) * 2) + 10);
 	this->NameText->setCharacterSize(25);
-	this->NameText->setColor(Color::White);
+	this->NameText->setColor(sf::Color::White);
 	this->NameText->setFont(*this->font);
 	this->NameBoxT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\TextBoxName.jpg");							  
 	this->NameBoxS->setTexture(*this->NameBoxT, false);
@@ -103,7 +103,7 @@ ConnexionState::ConnexionState()
 	this->ConnexButtonS->setTexture(*this->ConnexButtonT, false);
 
 	#ifdef _WIN32
-		socket = new WinSocket;
+		//socket = new WinSocket;
 		WSADATA WSAData;
 		WSAStartup(MAKEWORD(2,0), &WSAData);
 	#endif
@@ -117,48 +117,48 @@ ConnexionState::ConnexionState()
 	header->name[4] = '\0';
 }
 
-void	ConnexionState::Presentation(RenderWindow *window)
+void	ConnexionState::presentation(sf::RenderWindow& window)
 {
-	this->Planete = new Texture;
-	this->Background = new Sprite;
+	this->Planete = new sf::Texture;
+	this->Background = new sf::Sprite;
 	i = 1;
 //	this->ConnexionMusic.play();
 	while (i <= 24)
 	{
-		ostringstream	oss;
-		string			res;
+		std::ostringstream	oss;
+		std::string			res;
 		oss << i;
 		res = oss.str();
 		this->Planete->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\BackgroundConnexion" + res + ".jpg");
 		this->Background->setTexture(*this->Planete, false);
-		window->draw(*this->Background);
-		window->display();
+		window.draw(*this->Background);
+		window.display();
 		i++;
 		Sleep(500);
 	}
 }
 
-void		ConnexionState::Draw(RenderWindow* window)
+void		ConnexionState::draw(sf::RenderWindow& window)
 {
-	window->draw(*this->Background);
-	window->draw(*this->AddrBoxS);
-	window->draw(*this->PortBoxS);
-	window->draw(*this->NameBoxS);
-	window->draw(*this->ConnexButtonS);
-	window->draw(*this->AddrText);
-	window->draw(*this->PortText);
-	window->draw(*this->NameText);
+	window.draw(*this->Background);
+	window.draw(*this->AddrBoxS);
+	window.draw(*this->PortBoxS);
+	window.draw(*this->NameBoxS);
+	window.draw(*this->ConnexButtonS);
+	window.draw(*this->AddrText);
+	window.draw(*this->PortText);
+	window.draw(*this->NameText);
 }
 
-void	ConnexionState::Execute(RenderWindow* window)
+void	ConnexionState::execute(sf::RenderWindow& window)
 {
 	Sleep(75);
-	Vector2i MousePos = Mouse::getPosition(*window);
-	IntRect AddrRect(this->AddrBoxS->getPosition().x, this->AddrBoxS->getPosition().y, this->AddrBoxS->getLocalBounds().width, this->AddrBoxS->getLocalBounds().height);
-	IntRect PortRect(this->PortBoxS->getPosition().x, this->PortBoxS->getPosition().y, this->PortBoxS->getLocalBounds().width, this->PortBoxS->getLocalBounds().height);
-	IntRect NameRect(this->NameBoxS->getPosition().x, this->NameBoxS->getPosition().y, this->NameBoxS->getLocalBounds().width, this->NameBoxS->getLocalBounds().height);
-	IntRect ConnexRect(this->ConnexButtonS->getPosition().x, this->ConnexButtonS->getPosition().y, this->ConnexButtonS->getLocalBounds().width, this->ConnexButtonS->getLocalBounds().height);
-	if (Keyboard::isKeyPressed(Keyboard::Tab) || Keyboard::isKeyPressed(Keyboard::Escape) || Keyboard::isKeyPressed(Keyboard::Return))
+	sf::Vector2i MousePos = sf::Mouse::getPosition(window);
+	sf::IntRect AddrRect(this->AddrBoxS->getPosition().x, this->AddrBoxS->getPosition().y, this->AddrBoxS->getLocalBounds().width, this->AddrBoxS->getLocalBounds().height);
+	sf::IntRect PortRect(this->PortBoxS->getPosition().x, this->PortBoxS->getPosition().y, this->PortBoxS->getLocalBounds().width, this->PortBoxS->getLocalBounds().height);
+	sf::IntRect NameRect(this->NameBoxS->getPosition().x, this->NameBoxS->getPosition().y, this->NameBoxS->getLocalBounds().width, this->NameBoxS->getLocalBounds().height);
+	sf::IntRect ConnexRect(this->ConnexButtonS->getPosition().x, this->ConnexButtonS->getPosition().y, this->ConnexButtonS->getLocalBounds().width, this->ConnexButtonS->getLocalBounds().height);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 	{
 		this->RecordAddr = false;
 		this->RecordPort = false;
@@ -168,13 +168,13 @@ void	ConnexionState::Execute(RenderWindow* window)
 	{
 		this->ConnexButtonT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\ButtonConnexHover.jpg");
 		this->ConnexButtonS->setTexture(*this->ConnexButtonT, false);
-		if (Mouse::isButtonPressed(Mouse::Left))
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			std::stringstream ss;
 			short Port;
 			ss << this->PortString;
 			ss >> Port;
-			this->ConnexTest = this->socket->connectToServer(this->AddrString, Port);
+			//this->ConnexTest = this->socket->connectToServer(this->AddrString, Port);
 			std::string buffer;
 			if (this->ConnexTest == false)
 				std::cout << "loooooool" << std::endl;
@@ -189,7 +189,7 @@ void	ConnexionState::Execute(RenderWindow* window)
 	}
 	if (AddrRect.contains(MousePos))
 	{
-		if (Mouse::isButtonPressed(Mouse::Left))
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			this->AddrBoxT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\TextBoxAddrClicked.jpg");
 			this->AddrBoxS->setTexture(*this->AddrBoxT, false);
@@ -200,7 +200,7 @@ void	ConnexionState::Execute(RenderWindow* window)
 	}
 	if (PortRect.contains(MousePos))
 	{
-		if (Mouse::isButtonPressed(Mouse::Left))
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			this->PortBoxT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\TextBoxPortClicked.jpg");
 			this->PortBoxS->setTexture(*this->PortBoxT, false);
@@ -211,7 +211,7 @@ void	ConnexionState::Execute(RenderWindow* window)
 	}
 	if (NameRect.contains(MousePos))
 	{
-		if (Mouse::isButtonPressed(Mouse::Left))
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			this->NameBoxT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\TextBoxNameClicked.jpg");
 			this->NameBoxS->setTexture(*this->NameBoxT, false);
@@ -222,12 +222,12 @@ void	ConnexionState::Execute(RenderWindow* window)
 	}
 	if (this->RecordAddr)
 	{
-		if (Keyboard::isKeyPressed(Keyboard::BackSpace) == true && this->AddrString.size() > 0)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->AddrString.size() > 0)
 			this->AddrString.replace(this->AddrString.size() - 1, 1, "\0");
-		for (int c = 0; c < Keyboard::KeyCount; ++c)
-			if (Keyboard::isKeyPressed(static_cast<Keyboard::Key>(c)) && this->AddrString.size() < 16)
+		for (int c = 0; c < sf::Keyboard::KeyCount; ++c)
+			if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(c)) && this->AddrString.size() < 16)
 			{
-				this->addCharToAddr(static_cast<Keyboard::Key>(c));
+				this->addCharToAddr(static_cast<sf::Keyboard::Key>(c));
 				this->AddrText->setString(this->AddrString);
 			}
 	}
@@ -238,12 +238,12 @@ void	ConnexionState::Execute(RenderWindow* window)
 	}
 	if (this->RecordPort)
 	{
-		if (Keyboard::isKeyPressed(Keyboard::BackSpace) == true && this->PortString.size() > 0)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->PortString.size() > 0)
 			this->PortString.replace(this->PortString.size() - 1, 1, "\0");
-		for (int c = 0; c < Keyboard::KeyCount; ++c)
-			if (Keyboard::isKeyPressed(static_cast<Keyboard::Key>(c)) && this->PortString.size() < 5)
+		for (int c = 0; c < sf::Keyboard::KeyCount; ++c)
+			if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(c)) && this->PortString.size() < 5)
 			{
-				this->addCharToPort(static_cast<Keyboard::Key>(c));
+				this->addCharToPort(static_cast<sf::Keyboard::Key>(c));
 				this->PortText->setString(this->PortString);
 			}
 	}
@@ -254,12 +254,12 @@ void	ConnexionState::Execute(RenderWindow* window)
 	}
 	if (this->RecordName)
 	{
-		if (Keyboard::isKeyPressed(Keyboard::BackSpace) == true && this->NameString.size() > 0)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->NameString.size() > 0)
 			this->NameString.replace(this->NameString.size() - 1, 1, "\0");
-		for (int c = 0; c < Keyboard::KeyCount; ++c)
-			if (Keyboard::isKeyPressed(static_cast<Keyboard::Key>(c)) && this->NameString.size() < 5)
+		for (int c = 0; c < sf::Keyboard::KeyCount; ++c)
+			if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(c)) && this->NameString.size() < 5)
 			{
-				this->addCharToName(static_cast<Keyboard::Key>(c));
+				this->addCharToName(static_cast<sf::Keyboard::Key>(c));
 				this->NameText->setString(this->NameString);
 			}
 	}
@@ -270,7 +270,7 @@ void	ConnexionState::Execute(RenderWindow* window)
 	}
 }
 
-void	ConnexionState::addCharToAddr(Keyboard::Key key)
+void	ConnexionState::addCharToAddr(sf::Keyboard::Key key)
 {
   CsPtrFunc ptr;
 
@@ -283,7 +283,7 @@ void	ConnexionState::addCharToAddr(Keyboard::Key key)
     return;
 }
 
-void	ConnexionState::addCharToPort(Keyboard::Key key)
+void	ConnexionState::addCharToPort(sf::Keyboard::Key key)
 {
   CsPtrFunc ptr;
 
@@ -296,7 +296,7 @@ void	ConnexionState::addCharToPort(Keyboard::Key key)
     return;
 }
 
-void	ConnexionState::addCharToName(Keyboard::Key key)
+void	ConnexionState::addCharToName(sf::Keyboard::Key key)
 {
   CsPtrFunc ptr;
 
