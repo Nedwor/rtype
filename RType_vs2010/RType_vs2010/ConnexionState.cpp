@@ -138,7 +138,19 @@ void	ConnexionState::Presentation(RenderWindow *window)
 	}
 }
 
-void	ConnexionState::Draw(RenderWindow *window)
+void		ConnexionState::Draw(RenderWindow* window)
+{
+	window->draw(*this->Background);
+	window->draw(*this->AddrBoxS);
+	window->draw(*this->PortBoxS);
+	window->draw(*this->NameBoxS);
+	window->draw(*this->ConnexButtonS);
+	window->draw(*this->AddrText);
+	window->draw(*this->PortText);
+	window->draw(*this->NameText);
+}
+
+void	ConnexionState::Execute(RenderWindow* window)
 {
 	Sleep(75);
 	Vector2i MousePos = Mouse::getPosition(*window);
@@ -256,15 +268,6 @@ void	ConnexionState::Draw(RenderWindow *window)
 		if (this->NameString.size() == 0)
 			this->NameBoxT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\TextBoxName.jpg");
 	}
-	window->draw(*this->Background);
-	window->draw(*this->AddrBoxS);
-	window->draw(*this->PortBoxS);
-	window->draw(*this->NameBoxS);
-	window->draw(*this->ConnexButtonS);
-	window->draw(*this->AddrText);
-	window->draw(*this->PortText);
-	window->draw(*this->NameText);
-
 }
 
 void	ConnexionState::addCharToAddr(Keyboard::Key key)

@@ -95,8 +95,9 @@ public:
 	ConnexionState(void);
 	~ConnexionState(void);
 
-	void		Draw(RenderWindow*);
-	void		Presentation(RenderWindow*);
+	void		Draw(RenderWindow *);
+	void		Execute(RenderWindow *);
+	void		Presentation(RenderWindow *);
 	bool		TryToConnect();
 	void		addCharToAddr(Keyboard::Key);
 	void		addCharToPort(Keyboard::Key);
