@@ -19,6 +19,9 @@
     <Filter Include="Thread">
       <UniqueIdentifier>{1b90cb56-17d4-4a5b-b61a-8a99647f4098}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{362313ae-c351-4809-ae44-b9ab5db4656b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -54,6 +57,15 @@
     <ClInclude Include="..\..\Thread\WinThread.h">
       <Filter>Thread</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BigBoss.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -82,6 +94,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Thread\WinThread.cpp">
       <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
+    <ClCompile Include="BigBoss.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Library</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

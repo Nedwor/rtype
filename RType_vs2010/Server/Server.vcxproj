@@ -78,9 +78,12 @@
     <ClInclude Include="..\..\Thread\UnixThread.h" />
     <ClInclude Include="..\..\Thread\WinThread.h" />
     <ClInclude Include="AObject.h" />
+    <ClInclude Include="BigBoss.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="ISocket.h" />
     <ClInclude Include="ManageRoom.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="rfc.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="UnixSocket.h" />
@@ -90,11 +93,14 @@
     <ClCompile Include="..\..\Thread\UnixThread.cpp" />
     <ClCompile Include="..\..\Thread\WinThread.cpp" />
     <ClCompile Include="AObject.cpp" />
+    <ClCompile Include="BigBoss.cpp" />
     <ClCompile Include="Client.cpp">
       <DeploymentContent>false</DeploymentContent>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManageRoom.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="UnixSocket.cpp" />
     <ClCompile Include="WinSocket.cpp" />
