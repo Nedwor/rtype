@@ -92,6 +92,8 @@
     <ClInclude Include="WinSocket.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\PresentationConnexion\ButtonConnex.jpg" />
+    <None Include="..\..\..\PresentationConnexion\ButtonConnexHover.jpg" />
     <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion1.jpg" />
     <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion10.jpg" />
     <None Include="..\Release\ressources\PresentationConnexion\BackgroundConnexion11.jpg" />

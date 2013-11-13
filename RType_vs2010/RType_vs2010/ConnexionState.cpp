@@ -54,6 +54,9 @@ ConnexionState::ConnexionState()
 	this->font = new Font;
 	this->MusicOn = false;
 
+	this->ConnexButtonT = new Texture;
+	this->ConnexButtonS = new Sprite;
+
 	this->AddrText = new Text;
 	this->AddrBoxT = new Texture;
 	this->AddrBoxS = new Sprite;
@@ -94,6 +97,24 @@ ConnexionState::ConnexionState()
 	this->NameText->setFont(*this->font);
 	this->NameBoxT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\TextBoxName.jpg");							  
 	this->NameBoxS->setTexture(*this->NameBoxT, false);
+
+	this->ConnexButtonS->setPosition((1024 / 2) - 100, ((763 / 3) * 2) + 100);
+	this->ConnexButtonT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\ButtonConnex.jpg");							  
+	this->ConnexButtonS->setTexture(*this->ConnexButtonT, false);
+
+	#ifdef _WIN32
+		socket = new WinSocket;
+		WSADATA WSAData;
+		WSAStartup(MAKEWORD(2,0), &WSAData);
+	#endif
+	this->header = new t_TCPConnection;
+	header->header.type = CONNECTION;
+	header->header.packetSize = 320;
+	header->name[0] = '\0';
+	header->name[1] = 'e';
+	header->name[2] = 's';
+	header->name[3] = 't';
+	header->name[4] = '\0';
 }
 
 void	ConnexionState::Presentation(RenderWindow *window)
@@ -101,7 +122,7 @@ void	ConnexionState::Presentation(RenderWindow *window)
 	this->Planete = new Texture;
 	this->Background = new Sprite;
 	i = 1;
-	this->ConnexionMusic.play();
+//	this->ConnexionMusic.play();
 	while (i <= 24)
 	{
 		ostringstream	oss;
@@ -124,11 +145,35 @@ void	ConnexionState::Draw(RenderWindow *window)
 	IntRect AddrRect(this->AddrBoxS->getPosition().x, this->AddrBoxS->getPosition().y, this->AddrBoxS->getLocalBounds().width, this->AddrBoxS->getLocalBounds().height);
 	IntRect PortRect(this->PortBoxS->getPosition().x, this->PortBoxS->getPosition().y, this->PortBoxS->getLocalBounds().width, this->PortBoxS->getLocalBounds().height);
 	IntRect NameRect(this->NameBoxS->getPosition().x, this->NameBoxS->getPosition().y, this->NameBoxS->getLocalBounds().width, this->NameBoxS->getLocalBounds().height);
+	IntRect ConnexRect(this->ConnexButtonS->getPosition().x, this->ConnexButtonS->getPosition().y, this->ConnexButtonS->getLocalBounds().width, this->ConnexButtonS->getLocalBounds().height);
 	if (Keyboard::isKeyPressed(Keyboard::Tab) || Keyboard::isKeyPressed(Keyboard::Escape) || Keyboard::isKeyPressed(Keyboard::Return))
 	{
 		this->RecordAddr = false;
 		this->RecordPort = false;
 		this->RecordName = false;
+	}
+	if (ConnexRect.contains(MousePos))
+	{
+		this->ConnexButtonT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\ButtonConnexHover.jpg");
+		this->ConnexButtonS->setTexture(*this->ConnexButtonT, false);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			std::stringstream ss;
+			short Port;
+			ss << this->PortString;
+			ss >> Port;
+			this->ConnexTest = this->socket->connectToServer(this->AddrString, Port);
+			std::string buffer;
+			if (this->ConnexTest == false)
+				std::cout << "loooooool" << std::endl;
+			else
+				std::cout << "ok" << std::endl;
+		}
+	}
+	else
+	{
+		this->ConnexButtonT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\ButtonConnex.jpg");
+		this->ConnexButtonS->setTexture(*this->ConnexButtonT, false);
 	}
 	if (AddrRect.contains(MousePos))
 	{
@@ -215,9 +260,11 @@ void	ConnexionState::Draw(RenderWindow *window)
 	window->draw(*this->AddrBoxS);
 	window->draw(*this->PortBoxS);
 	window->draw(*this->NameBoxS);
+	window->draw(*this->ConnexButtonS);
 	window->draw(*this->AddrText);
 	window->draw(*this->PortText);
 	window->draw(*this->NameText);
+
 }
 
 void	ConnexionState::addCharToAddr(Keyboard::Key key)

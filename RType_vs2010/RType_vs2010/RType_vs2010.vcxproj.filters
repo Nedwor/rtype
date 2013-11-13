@@ -136,5 +136,11 @@
     <None Include="..\Release\ressources\PresentationConnexion\ConnexionSong.wav">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\..\..\PresentationConnexion\ButtonConnex.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\PresentationConnexion\ButtonConnexHover.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

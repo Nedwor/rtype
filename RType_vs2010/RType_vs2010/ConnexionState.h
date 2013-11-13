@@ -3,10 +3,11 @@
 #include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
+#include "WinSocket.h"
+#include "rfc.h"
 #include <stack>
 #include <iostream>
 #include <sstream>
-//#include "WinSocket.h"
 #include <windows.h>
 
 using namespace sf;
@@ -20,29 +21,31 @@ class ConnexionState
 {
 private:
 	stack<Sprite*>						BgVec;
-	//ISocket								*socket;
 	Texture								*Planete;
 	Sprite								*Background;
 	Music								ConnexionMusic;
 	Sprite								*AddrBoxS;
-	Sprite								*AddrBoxHoverS;
 	Texture								*AddrBoxT;
 	Texture								*AddrBoxHoverT;
 	string								AddrString;
 	Text								*AddrText;
 	Sprite								*PortBoxS;
-	Sprite								*PortBoxHoverS;
 	Texture								*PortBoxT;
 	Texture								*PortBoxHoverT;
 	string								PortString;
 	Text								*PortText;
 	Sprite								*NameBoxS;
-	Sprite								*NameBoxHoverS;
 	Texture								*NameBoxT;
 	Texture								*NameBoxHoverT;
+	Sprite								*ConnexButtonS;
+	Texture								*ConnexButtonT;
+	Texture								*ConnexButtonHoverT;
 	string								NameString;
 	Text								*NameText;
 	Font								*font;
+	t_TCPConnection						*header;
+	ISocket								*socket;
+	bool								ConnexTest;
 	bool								RecordAddr;
 	bool								RecordPort;
 	bool								RecordName;
@@ -94,6 +97,7 @@ public:
 
 	void		Draw(RenderWindow*);
 	void		Presentation(RenderWindow*);
+	bool		TryToConnect();
 	void		addCharToAddr(Keyboard::Key);
 	void		addCharToPort(Keyboard::Key);
 	void		addCharToName(Keyboard::Key);
