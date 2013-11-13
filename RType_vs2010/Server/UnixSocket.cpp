@@ -38,7 +38,18 @@ bool	UnixSocket::bindSocket(short port)
 	return true;
 }
 
-int UnixSocket::recData(std::string & buffer, int blocksize){	int len;	char	buff[255];	if ((len = recv(this->sock, buff, blocksize, 0)) == -1)		return len;	buffer = buff;	return len;}int UnixSocket::sendData(std::string const & data)
+int UnixSocket::recData(std::string & buffer, int blocksize)
+{
+	int len;
+	char	buff[255];
+
+	if ((len = recv(this->sock, buff, blocksize, 0)) == -1)
+		return len;
+	buffer = buff;
+	return len;
+}
+
+int UnixSocket::sendData(std::string const & data)
 {
 	int	len;
 

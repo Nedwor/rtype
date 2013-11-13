@@ -8,6 +8,8 @@ Client::Client(void)
 
 Client::~Client(void)
 {
+	this->name ="";
+	this->ip = "";
 }
 void Client::setName(std::string const &name)
 {

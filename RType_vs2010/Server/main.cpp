@@ -1,7 +1,6 @@
 #include <iostream>
 #include "ManageRoom.h"
 
-
 int main()
 {
 	ManageRoom manager;
