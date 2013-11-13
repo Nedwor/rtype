@@ -1,8 +1,7 @@
-﻿Build started 13/11/2013 20:24:39.
+﻿Build started 13/11/2013 20:53:31.
      1>Project "C:\Users\derval_g\Documents\Git Test\rtype\RType_vs2010\RType_vs2010\RType_vs2010.vcxproj" on node 3 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Release\RType_vs2010.lastbuildstate".
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppClean.targets(74,5): warning : The process cannot access the file 'C:\USERS\DERVAL_G\DOCUMENTS\GIT TEST\RTYPE\RTYPE_VS2010\RTYPE_VS2010\RELEASE\CONNEXIONSTATE.OBJ' because it is being used by another process.
        InitializeBuildStatus:
          Creating "Release\RType_vs2010.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
@@ -44,4 +43,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.61
+Time Elapsed 00:00:05.97

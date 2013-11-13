@@ -194,6 +194,8 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 			header = (t_TCPHeader *)buf;
 			if (header->type == PACKET_ERROR)
 				std::cout << "Error during loging" << std::endl;
+			else if (header->type = ESTABLISHED)
+				std::cout << "Successfully logged" << std::endl;
 			std::string buffer;
 			if (this->ConnexTest == false)
 				std::cout << "loooooool" << std::endl;

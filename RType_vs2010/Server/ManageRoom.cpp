@@ -62,11 +62,12 @@ void	ManageRoom::check_list()
 				t_TCPHeader *header;
 				if ((len = socket->recBinary(buf, 1024)) < 0)
 				{
-					socket->closeSocket();
 					this->clList.erase(it++);
 					std::map<std::string, Room *>::iterator it;
-					if ((it = this->_access.find(socket->getIp())) != this->_access.end())
+					std::string ip = socket->getIp();
+					if ((it = this->_access.find(ip)) != this->_access.end())
 						this->_access.erase(it);
+					socket->closeSocket();
 				}
 				else
 				{

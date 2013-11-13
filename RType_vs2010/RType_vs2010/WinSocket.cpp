@@ -193,6 +193,7 @@ std::string WinSocket::getIp()
 			wprintf(L"InetNtop failed with error %u\n", WSAGetLastError());
 			return 0;
 		}
+			std::cout << "lol3" << std::endl;
 		return s;
 }
 
