@@ -62,7 +62,29 @@ bool WinSocket::listenSocket(int backlog)
 	return true;
 }
 
-int WinSocket::recData(std::string & buffer , int blocksize){	WSABUF Databuf;	DWORD receive;	DWORD lflag = 0;	char buf[1024];	Databuf.len = blocksize + 1;	Databuf.buf = buf;	receive = blocksize;	int err;	int len;	if (((len = WSARecv(this->sock, &Databuf, 1, &receive, &lflag, NULL, NULL)) ==  SOCKET_ERROR ) 			&& (WSA_IO_PENDING != (err = WSAGetLastError())))			{		wprintf(L"recvfailed with error %u\n", WSAGetLastError());		return (-1);	}	buffer = Databuf.buf;	return len;}int WinSocket::sendData(std::string const & data)
+int WinSocket::recData(std::string & buffer , int blocksize)
+{
+	WSABUF Databuf;
+	DWORD receive;
+	DWORD lflag = 0;
+	char buf[1024];
+	Databuf.len = blocksize + 1;
+	Databuf.buf = buf;
+	receive = blocksize;
+	int err;
+	int len;
+	if (((len = WSARecv(this->sock, &Databuf, 1, &receive, &lflag, NULL, NULL)) ==  SOCKET_ERROR ) 
+			&& (WSA_IO_PENDING != (err = WSAGetLastError())))
+			{
+		wprintf(L"recvfailed with error %u\n", WSAGetLastError());
+		return (-1);
+	}
+	buffer = Databuf.buf;
+	return len;
+}
+
+
+int WinSocket::sendData(std::string const & data)
 {
 	WSABUF Databuf;
 	Databuf.len = data.length();
@@ -81,7 +103,25 @@ bool WinSocket::closeSocket()
 	return false;
 }
 
-int WinSocket::recDataFrom(std::string & buffer , int blocksize){	WSABUF Databuf;	DWORD receive;	struct sockaddr_in in;	char buf[1024];	int len;	Databuf.len = blocksize + 1;	Databuf.buf = buf;	receive = blocksize;	int size = sizeof(in);	if ((len = WSARecvFrom(this->sock, &Databuf, 1, &receive, 0, (SOCKADDR *)& in, &size, 0, 0)) ==  SOCKET_ERROR)		return (-1);	buffer = Databuf.buf;	return len;}int WinSocket::sendDataTo(std::string const & data,std::string const &host, int port)
+int WinSocket::recDataFrom(std::string & buffer , int blocksize)
+{
+	WSABUF Databuf;
+	DWORD receive;
+	struct sockaddr_in in;
+	char buf[1024];
+	int len;
+
+	Databuf.len = blocksize + 1;
+	Databuf.buf = buf;
+	receive = blocksize;
+	int size = sizeof(in);
+	if ((len = WSARecvFrom(this->sock, &Databuf, 1, &receive, 0, (SOCKADDR *)& in, &size, 0, 0)) ==  SOCKET_ERROR)
+		return (-1);
+	buffer = Databuf.buf;
+	return len;
+}
+
+int WinSocket::sendDataTo(std::string const & data,std::string const &host, int port)
 {
 	struct sockaddr_in that;
 	WSABUF Databuf;
@@ -156,9 +196,24 @@ std::string WinSocket::getIp()
 		return s;
 }
 
+#include "rfc.h"
 int			WinSocket::recBinary(void *point, int blocksize)
 {
-	WSABUF Databuf;	DWORD receive;	DWORD lflag = 0;	Databuf.len = blocksize + 1;	Databuf.buf = (char *)point;	receive = blocksize;	int err;	int len;	if (((len = WSARecv(this->sock, &Databuf, 1, &receive, &lflag, NULL, NULL)) ==  SOCKET_ERROR ) 			&& (WSA_IO_PENDING != (err = WSAGetLastError())))			{		wprintf(L"recvfailed with error %u\n", WSAGetLastError());		return (-1);	}	return len;
+	WSABUF Databuf;
+	DWORD receive;
+	DWORD lflag = 0;
+	Databuf.len = blocksize + 1;
+	Databuf.buf = (char *)point;
+	receive = blocksize;
+	int err;
+	int len;
+	if (((len = WSARecv(this->sock, &Databuf, 1, &receive, &lflag, NULL, NULL)) ==  SOCKET_ERROR ) 
+			&& (WSA_IO_PENDING != (err = WSAGetLastError())))
+			{
+		wprintf(L"recvfailed with error %u\n", WSAGetLastError());
+		return (-1);
+	}
+	return len;
 }
 
 int			WinSocket::sendBinary(void *point, int len)

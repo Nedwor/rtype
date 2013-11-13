@@ -28,4 +28,3 @@ private:
 	ISocket *socket;
 	char id_player;
 };
-

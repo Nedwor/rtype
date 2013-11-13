@@ -18,6 +18,7 @@ public:
 	void	lauchServeur(int port);
 	void	check_list();
 	int		getMaxFDAndSet();
+	void	sendErrorPacket(ISocket *socket, ERROR_TYPE err);
 	void	handleConnection(void *buffer, Client *cl);
 	void	handleListGames(void *buffer, Client *cl);
 	void	handleConnectGame(void *buffer, Client *cl);
