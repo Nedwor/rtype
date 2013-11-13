@@ -125,7 +125,7 @@ void ManageRoom::lauchServeur(int port)
 		{
 			if ((sock = this->server->acceptedConnection()) != NULL)
 			{
-				Client *cl = new Client;
+				Client *cl = new Client(AObject::Ally, 0, 0, 0, 0, 0, 0, 0);
 				cl->setSocket(sock);
 				clList.push_front(cl);
 			}

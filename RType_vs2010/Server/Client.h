@@ -12,7 +12,7 @@
 class Client : public AObject
 {
 public:
-	Client(void);
+	Client(AObject::objectType, int, int, int, int, int, int, int);
 	~Client(void);
 	void setName(std::string const &name);
 	std::string getName() const;

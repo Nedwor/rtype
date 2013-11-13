@@ -1,12 +1,17 @@
 #include "AObject.h"
 
-
-AObject::AObject(void)
+AObject::AObject(objectType type, int idObject, int x, int y, int height, int width, int Vx, int Vy)
+  : _type(type), _idObject(idObject), _x(x), _y(y), _height(height), _width(width), _Vx(Vx), _Vy(Vy)
 {
 }
-
-
-
+AObject::objectType AObject::getType() const
+{
+  return this->_type;
+}
+int AObject::getIdObject() const
+{
+  return this->_idObject;
+}
 int AObject::getPosX() const
 {
 	return this->_x;
@@ -15,6 +20,14 @@ int AObject::getPosY() const
 {
 	return this->_y;
 }
+int AObject::getHeight() const
+{
+  return this->_height;
+}
+int AObject::getWidth() const
+{
+  return this->_width;
+}
 int AObject::getVecVx() const
 {
 	return this->_Vx;
@@ -22,6 +35,14 @@ int AObject::getVecVx() const
 int AObject::getVecVy() const
 {
 	return this->_Vy;
+}
+void AObject::setType(objectType type)
+{
+  this->_type = type;
+}
+void AObject::setIdObject(int idObject)
+{
+  this->_idObject = idObject;
 }
 void AObject::setPosX(int x)
 {
@@ -48,15 +69,6 @@ void	AObject::setWidth(int w)
 void	AObject::setHeight(int h)
 {
 	this->_height = h;
-}
-
-int AObject::getHeight() const
-{
-	return this->_height;
-}
-int AObject::getWidth() const
-{
-	return this->_width;
 }
 
 bool AObject::getCollision(AObject *obj)
