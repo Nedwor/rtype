@@ -152,7 +152,6 @@ void		ConnexionState::Draw(RenderWindow* window)
 
 void	ConnexionState::Execute(RenderWindow* window)
 {
-	Sleep(75);
 	Vector2i MousePos = Mouse::getPosition(*window);
 	IntRect AddrRect(this->AddrBoxS->getPosition().x, this->AddrBoxS->getPosition().y, this->AddrBoxS->getLocalBounds().width, this->AddrBoxS->getLocalBounds().height);
 	IntRect PortRect(this->PortBoxS->getPosition().x, this->PortBoxS->getPosition().y, this->PortBoxS->getLocalBounds().width, this->PortBoxS->getLocalBounds().height);

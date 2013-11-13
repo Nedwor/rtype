@@ -16,16 +16,8 @@ int main()
 		   if (event.type == Event::Closed)
                 window.close();
         }
-		/*
-		socket->recData(buffer, 255);
-		std::cout << "Received" << buffer << std::endl;
-		std::cout << header.header.packetSize << std::endl;
-		socket->sendBinary(&header, sizeof(header));
-		socket->recBinary(&header.header, 1024);
-		std::cout << "Type " << header.header.type << std::endl;
-		*/
-//		Sleep(1000000);
         window.clear();
+		CS.Execute(&window);
 		CS.Draw(&window);
 		window.display();
 	}
