@@ -134,7 +134,7 @@ void	ConnexionState::presentation(sf::RenderWindow& window)
 		window.draw(*this->Background);
 		window.display();
 		i++;
-		Sleep(500);
+		Sleep(5);
 	}
 }
 
