@@ -39,3 +39,12 @@ void AObject::setVecVy(int Vy)
 {
 	this->Vy = Vy;
 }
+
+bool AObject::getCollision(AObject obj)
+{
+  if (this->_x + this->_width/4) < obj->getPosX() - (obj->getWidth()/4) * 3) return false;
+  if (this->_x - ((this->_width/4) * 3) > obj->getPosX() + obj->getWidth()/4)return false;
+  if (this->_y + this->_height/4) < obj->getPosY() - (obj->getHeight()/4) * 3) return false;
+  if (this->_y - ((this->_height/4) * 3) > obj->getPosY() + obj->getHeight()/4) return false;
+  return true;
+}
