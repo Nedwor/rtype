@@ -20,7 +20,7 @@ public:
 	std::string getIp() const;
 	ISocket *getSocket() const;
 	void setSocket(ISocket *sock);
-	short getIdPlayer() const;
+	char getIdPlayer() const;
 	void setIdPlayer(char id);
 private:
 	std::string ip;

@@ -46,7 +46,7 @@ void Client::setIdPlayer(char id)
 	this->id_player = id;
 }
 
-short Client::getIdPlayer() const
+char Client::getIdPlayer() const
 {
 	return this->id_player;
 }

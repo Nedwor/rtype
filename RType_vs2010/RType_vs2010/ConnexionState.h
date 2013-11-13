@@ -37,6 +37,7 @@ private:
 	sf::Text								*NameText;
 	sf::Font								*font;
 	t_TCPConnection						*header;
+	bool									_isclicked;
 	//ISocket								*socket;
 	bool								ConnexTest;
 	bool								RecordAddr;

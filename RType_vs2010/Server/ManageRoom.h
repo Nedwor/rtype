@@ -6,6 +6,7 @@
 #include "rfc.h"
 #include <map>
 #include "Room.h"
+#include "WinThread.h"
 
 class ManageRoom
 {

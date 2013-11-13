@@ -67,11 +67,16 @@ void	ManageRoom::check_list()
 				t_TCPHeader *header;
 				if ((len = socket->recBinary(buf, 1024)) < 0)
 				{
-					this->clList.erase(it++);
-					std::map<std::string, Room *>::iterator it;
+					std::map<std::string, Room *>::iterator it2;
 					std::string ip = socket->getIp();
-					if ((it = this->_access.find(ip)) != this->_access.end())
-						this->_access.erase(it);
+					if ((it2 = this->_access.find(ip)) != this->_access.end())
+					{
+						std::cout << "quittons la partie "<< (int)(*it)->getIdPlayer() << std::endl;
+						Room * room = it2->second;
+						room->deleteClient((*it)->getIdPlayer());
+						this->_access.erase(it2);
+					}
+					this->clList.erase(it++);
 					socket->closeSocket();
 				}
 				else
@@ -114,7 +119,7 @@ void ManageRoom::lauchServeur(int port)
 	WSADATA WSAData;
 	WSAStartup(MAKEWORD(2,0), &WSAData);
 #endif
-	this->Udp->initUDP(7274);
+	this->Udp->initServer(7274);
 	this->server = socket;
 	if (socket->initServer(7273) == false)
 		return;
@@ -125,8 +130,8 @@ void ManageRoom::lauchServeur(int port)
 	{
 		int max = getMaxFDAndSet();
 		ISocket * sock;
-		time.tv_sec = 1;
-		time.tv_usec = 0;
+		time.tv_sec = 0;
+		time.tv_usec = 1;
 		if(select(max, &(this->read), 0,0, &time) == SOCKET_ERROR)
 		{
 			std::cout << "Select Error" << std::endl;
@@ -136,9 +141,11 @@ void ManageRoom::lauchServeur(int port)
 		{
 			if ((sock = this->server->acceptedConnection()) != NULL)
 			{
+				std::cout << "lol1" << std::endl;
 				Client *cl = new Client(AObject::Ally, 0, 0, 0, 0, 0, 0, 0);
 				cl->setSocket(sock);
 				clList.push_front(cl);
+				std::cout << "lol2" << std::endl;
 			}
 			else if (FD_ISSET(this->Udp->getSocket(), &(this->read)))
 			{
@@ -165,6 +172,7 @@ void	ManageRoom::handleCreateGame(void *buffer, Client *cl)
 	room->setGameId(this->currentGameId);
 	room->setNbMax(create->nb_max);
 	char id = room->addClient(cl);
+	std::cout << (int)id  << std::endl;
 	this->listRoom[this->currentGameId++] = room;
 	int i = 0;
 	int len;
@@ -183,6 +191,11 @@ void	ManageRoom::handleCreateGame(void *buffer, Client *cl)
 
 	sock = cl->getSocket();
 	this->_access[sock->getIp()] = room;
+	IThread *th = new WinThread;
+
+	std::cout <<"LOOOOOOOOOOOL" << std::endl;
+	th->create(initGame, room);
+	std::cout << "LOOOL2"<< std::endl;
 	if ((len = sock->sendBinary(&Player, sizeof(Player))) < 0)
 		std::cout << "Error while sending Create" << std::endl;
 }

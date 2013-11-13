@@ -108,6 +108,7 @@ ConnexionState::ConnexionState()
 		WSADATA WSAData;
 		WSAStartup(MAKEWORD(2,0), &WSAData);
 	#endif
+		this->_isclicked = false;
 }
 
 void	ConnexionState::presentation(sf::RenderWindow& window)
@@ -166,8 +167,9 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 	{
 		this->ConnexButtonT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\ButtonConnexHover.jpg");
 		this->ConnexButtonS->setTexture(*this->ConnexButtonT, false);
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->_isclicked == false)
 		{
+			this->_isclicked = true;
 			std::stringstream ss;
 			short Port;
 			ss << this->PortString;
@@ -193,8 +195,20 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 			t_TCPHeader *header;
 			header = (t_TCPHeader *)buf;
 			if (header->type == PACKET_ERROR)
+			{
 				std::cout << "Error during loging" << std::endl;
+				this->_isclicked = false;
+			}
 			else if (header->type = ESTABLISHED)
+			{
+				t_TCPCreate cr;
+
+				std::cout << "Creating" << std::endl;
+				cr.header.type = CREATE_GAME;
+				cr.header.packetSize = sizeof(cr);
+				cr.nb_max = 4;
+				this->_socket->sendBinary(&cr, sizeof(cr));
+			}
 				std::cout << "Successfully logged" << std::endl;
 			std::string buffer;
 			if (this->ConnexTest == false)

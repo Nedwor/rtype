@@ -1,4 +1,4 @@
-﻿Build started 13/11/2013 21:42:21.
+﻿Build started 13/11/2013 23:08:34.
      1>Project "C:\Users\derval_g\Documents\Git Test\rtype\RType_vs2010\RType_vs2010\RType_vs2010.vcxproj" on node 3 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Release\RType_vs2010.lastbuildstate".
@@ -7,10 +7,6 @@
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Users\derval_g\Documents\Git Test\rtype\RType_vs2010\\Release\include" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D SFML_STATIC /D WIN32 /D NDEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ConnexionState.cpp GameStateManager.cpp main.cpp UnixSocket.cpp WinSocket.cpp
          ConnexionState.cpp
-     1>ConnexionState.cpp(155): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>ConnexionState.cpp(155): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>ConnexionState.cpp(155): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>ConnexionState.cpp(155): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
      1>ConnexionState.cpp(156): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>ConnexionState.cpp(156): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>ConnexionState.cpp(156): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
@@ -23,6 +19,10 @@
      1>ConnexionState.cpp(158): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>ConnexionState.cpp(158): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
      1>ConnexionState.cpp(158): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>ConnexionState.cpp(159): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>ConnexionState.cpp(159): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>ConnexionState.cpp(159): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>ConnexionState.cpp(159): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
          GameStateManager.cpp
          main.cpp
          UnixSocket.cpp
@@ -45,4 +45,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.03
+Time Elapsed 00:00:05.12

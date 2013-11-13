@@ -2,6 +2,7 @@
 #include <map>
 #include "Client.h"
 
+void *initGame(void *arg);
 class Room
 {
 public:
@@ -15,6 +16,7 @@ public:
 	bool deleteClient(char id);
 	void setGameId(short game_id);
 	short getGameId() const;
+	bool  initGame();
 private:
 	std::map<char, Client *> map;
 	char nb_max;
