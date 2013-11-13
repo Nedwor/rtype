@@ -108,14 +108,6 @@ ConnexionState::ConnexionState()
 		WSADATA WSAData;
 		WSAStartup(MAKEWORD(2,0), &WSAData);
 	#endif
-	this->header = new t_TCPConnection;
-	header->header.type = CONNECTION;
-	header->header.packetSize = 320;
-	header->name[0] = '\0';
-	header->name[1] = 'e';
-	header->name[2] = 's';
-	header->name[3] = 't';
-	header->name[4] = '\0';
 }
 
 void	ConnexionState::presentation(sf::RenderWindow& window)
@@ -180,7 +172,28 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 			short Port;
 			ss << this->PortString;
 			ss >> Port;
-			//this->ConnexTest = this->socket->connectToServer(this->AddrString, Port);
+	#ifdef _WIN32
+			this->_socket = new WinSocket;
+	#endif
+	#ifndef _WIN32
+			this->_socket = new WinSocket;
+	#endif
+			t_TCPConnection Connection;
+
+			Connection.header.type = CONNECTION;
+			Connection.header.packetSize = sizeof(Connection);
+			char buf[1025];
+			int i = 0;
+			while (this->NameString[i])
+				Connection.name[i] = this->NameString[i++];
+			std::cout << Connection.name << std::endl;
+			this->ConnexTest = this->_socket->connectToServer(this->AddrString, Port);
+			this->_socket->sendBinary(&Connection, sizeof(Connection));
+			this->_socket->recBinary(&buf, sizeof(Connection.header));
+			t_TCPHeader *header;
+			header = (t_TCPHeader *)buf;
+			if (header->type == PACKET_ERROR)
+				std::cout << "Error during loging" << std::endl;
 			std::string buffer;
 			if (this->ConnexTest == false)
 				std::cout << "loooooool" << std::endl;
@@ -228,7 +241,7 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 	}
 	if (this->RecordAddr)
 	{
-		if (sf::Keyboard::isKeyPressed(this->_lastKey) == false || this->_testKey > 1 || sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true)
+		if (sf::Keyboard::isKeyPressed(this->_lastKey) == false || this->_testKey > 0 || sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true)
 		{
 			this->_testKey = 0;
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->AddrString.size() > 0)
@@ -251,7 +264,7 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 	}
 	if (this->RecordPort)
 	{
-		if (sf::Keyboard::isKeyPressed(this->_lastKey) == false || this->_testKey > 1 || sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true)
+		if (sf::Keyboard::isKeyPressed(this->_lastKey) == false || this->_testKey > 0 || sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true)
 		{
 			this->_testKey = 0;
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->PortString.size() > 0)
@@ -274,7 +287,7 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 	}
 	if (this->RecordName)
 	{
-		if (sf::Keyboard::isKeyPressed(this->_lastKey) == false || this->_testKey > 1 || sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true)
+		if (sf::Keyboard::isKeyPressed(this->_lastKey) == false || this->_testKey > 0 || sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true)
 		{
 			this->_testKey = 0;
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->NameString.size() > 0)

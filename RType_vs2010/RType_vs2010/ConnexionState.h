@@ -2,6 +2,7 @@
 
 #include "IGameState.h"
 
+#include "rfc.h"
 class ConnexionState;
 
 typedef void (ConnexionState::*CsPtrFunc)(int);
@@ -44,6 +45,7 @@ private:
 	bool								MusicOn;
 	int									i;
 	std::map<sf::Keyboard::Key, CsPtrFunc>       _keyMap;
+	ISocket								*_socket;	
 
 	void		addA(int);
 	void		addB(int);

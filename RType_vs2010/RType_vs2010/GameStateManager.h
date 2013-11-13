@@ -1,5 +1,11 @@
 #pragma once
-
+#define NOMINMAX
+#ifdef _WIN32
+	#include "WinSocket.h"
+#endif
+#ifndef _WIN32
+	#include "UnixSocket.h"
+#endif
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
