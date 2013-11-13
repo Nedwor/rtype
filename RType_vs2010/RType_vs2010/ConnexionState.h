@@ -9,7 +9,10 @@ typedef void (ConnexionState::*CsPtrFunc)(int);
 class ConnexionState : public IGameState
 {
 private:
-	std::stack<sf::Sprite*>						BgVec;
+	int										_frames;
+	int										_testKey;
+	sf::Keyboard::Key						_lastKey;
+	std::stack<sf::Sprite*>					BgVec;
 	sf::Texture								*Planete;
 	sf::Sprite								*Background;
 	sf::Music								ConnexionMusic;

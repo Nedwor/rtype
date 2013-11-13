@@ -1,6 +1,7 @@
 #include "ConnexionState.h"
 
 ConnexionState::ConnexionState()
+	:_frames(0), _lastKey(sf::Keyboard::Unknown), _testKey(0)
 {
 	this->_keyMap[sf::Keyboard::A] = &ConnexionState::addA;
 	this->_keyMap[sf::Keyboard::B] = &ConnexionState::addB;
@@ -134,7 +135,7 @@ void	ConnexionState::presentation(sf::RenderWindow& window)
 		window.draw(*this->Background);
 		window.display();
 		i++;
-		Sleep(5);
+		Sleep(500);
 	}
 }
 
@@ -152,7 +153,12 @@ void		ConnexionState::draw(sf::RenderWindow& window)
 
 void	ConnexionState::execute(sf::RenderWindow& window)
 {
-	Sleep(75);
+	if (this->_frames <= 2)
+	{
+		this->_frames += 1;
+		return;
+	}
+	this->_frames = 0;
 	sf::Vector2i MousePos = sf::Mouse::getPosition(window);
 	sf::IntRect AddrRect(this->AddrBoxS->getPosition().x, this->AddrBoxS->getPosition().y, this->AddrBoxS->getLocalBounds().width, this->AddrBoxS->getLocalBounds().height);
 	sf::IntRect PortRect(this->PortBoxS->getPosition().x, this->PortBoxS->getPosition().y, this->PortBoxS->getLocalBounds().width, this->PortBoxS->getLocalBounds().height);
@@ -222,14 +228,21 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 	}
 	if (this->RecordAddr)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->AddrString.size() > 0)
-			this->AddrString.replace(this->AddrString.size() - 1, 1, "\0");
-		for (int c = 0; c < sf::Keyboard::KeyCount; ++c)
-			if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(c)) && this->AddrString.size() < 16)
-			{
-				this->addCharToAddr(static_cast<sf::Keyboard::Key>(c));
-				this->AddrText->setString(this->AddrString);
-			}
+		if (sf::Keyboard::isKeyPressed(this->_lastKey) == false || this->_testKey > 1 || sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true)
+		{
+			this->_testKey = 0;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->AddrString.size() > 0)
+				this->AddrString.replace(this->AddrString.size() - 1, 1, "\0");
+			for (int c = 0; c < sf::Keyboard::KeyCount; ++c)
+				if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(c)) && this->AddrString.size() < 16)
+				{
+					this->_lastKey = static_cast<sf::Keyboard::Key>(c);
+					this->addCharToAddr(static_cast<sf::Keyboard::Key>(c));
+					this->AddrText->setString(this->AddrString);
+				}
+		}
+		else
+			this->_testKey += 1;
 	}
 	else
 	{
@@ -238,14 +251,21 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 	}
 	if (this->RecordPort)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->PortString.size() > 0)
-			this->PortString.replace(this->PortString.size() - 1, 1, "\0");
-		for (int c = 0; c < sf::Keyboard::KeyCount; ++c)
-			if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(c)) && this->PortString.size() < 5)
-			{
-				this->addCharToPort(static_cast<sf::Keyboard::Key>(c));
-				this->PortText->setString(this->PortString);
-			}
+		if (sf::Keyboard::isKeyPressed(this->_lastKey) == false || this->_testKey > 1 || sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true)
+		{
+			this->_testKey = 0;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->PortString.size() > 0)
+				this->PortString.replace(this->PortString.size() - 1, 1, "\0");
+			for (int c = 0; c < sf::Keyboard::KeyCount; ++c)
+				if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(c)) && this->PortString.size() < 5)
+				{
+					this->_lastKey = static_cast<sf::Keyboard::Key>(c);
+					this->addCharToPort(static_cast<sf::Keyboard::Key>(c));
+					this->PortText->setString(this->PortString);
+				}
+		}
+		else
+			this->_testKey += 1;
 	}
 	else
 	{
@@ -254,14 +274,21 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 	}
 	if (this->RecordName)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->NameString.size() > 0)
-			this->NameString.replace(this->NameString.size() - 1, 1, "\0");
-		for (int c = 0; c < sf::Keyboard::KeyCount; ++c)
-			if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(c)) && this->NameString.size() < 5)
-			{
-				this->addCharToName(static_cast<sf::Keyboard::Key>(c));
-				this->NameText->setString(this->NameString);
-			}
+		if (sf::Keyboard::isKeyPressed(this->_lastKey) == false || this->_testKey > 1 || sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true)
+		{
+			this->_testKey = 0;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true && this->NameString.size() > 0)
+				this->NameString.replace(this->NameString.size() - 1, 1, "\0");
+			for (int c = 0; c < sf::Keyboard::KeyCount; ++c)
+				if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(c)) && this->NameString.size() < 5)
+				{
+					this->_lastKey = static_cast<sf::Keyboard::Key>(c);
+					this->addCharToName(static_cast<sf::Keyboard::Key>(c));
+					this->NameText->setString(this->NameString);
+				}
+		}
+		else
+			this->_testKey += 1;
 	}
 	else
 	{

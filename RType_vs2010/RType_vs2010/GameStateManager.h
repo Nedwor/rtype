@@ -20,7 +20,7 @@ class GameStateManager
 {
 	sf::RenderWindow* _win;
 	std::stack<IGameState*>	_states;
-	//sf::Clock	_clock;
+	sf::Clock	_clock;
 /*  ObjectsManager	_Object;
 	HandleConnexion	_connexion;
 	IThread		_connexionThread;

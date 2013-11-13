@@ -17,8 +17,10 @@ void	GameStateManager::connect(std::string name, std::string ip)
 
 void	GameStateManager::run()
 {
-	while (this->_win->isOpen())
+	IGameState* currState = this->_states.top();
+	while (this->_win->isOpen() && currState != NULL)
 	{
+		sf::Time time = this->_clock.restart();
 		sf::Event	event;
 		while (this->_win->pollEvent(event))
         {
@@ -38,14 +40,10 @@ void	GameStateManager::run()
 		this->_states.top()->execute(*this->_win);
 		this->_states.top()->draw(*this->_win);
 		this->_win->display();
+		sf::Time time2 = this->_clock.getElapsedTime();
+		std::cout<< time2.asMilliseconds() << " !! " << 16 << std::endl;
+		if (time2.asMilliseconds() < 16)
+			Sleep(16 - time2.asMilliseconds());
+		currState = this->_states.top();
 	}
-
-	/*IGameState* currState = this->getCurrentState();
-	while (currState != NULL)
-	{
-		SF::Time time = this->_clock.restart();
-		if (time.asMicroseconds() < (1/60))
-			usleep(1/60 - time.asMicroseconds());
-		currState = this->getCurrentState();
-	}*/
 }
