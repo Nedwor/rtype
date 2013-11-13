@@ -81,11 +81,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConnexionState.cpp" />
+    <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="WinSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConnexionState.h" />
+    <ClInclude Include="GameStateManager.h" />
+    <ClInclude Include="IGameState.h" />
     <ClInclude Include="ISocket.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="rfc.h" />
