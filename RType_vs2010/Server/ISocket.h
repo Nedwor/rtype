@@ -18,7 +18,8 @@ public:
 	virtual bool		initUDP(int port) = 0;
 	virtual bool		closeSocket() = 0;
 	virtual int			recDataFrom(std::string & buffer, int blocksize) = 0;	virtual int			sendDataTo(std::string const & data, std::string const &host, int port) = 0;
-	
+	virtual int			recBinaryFrom(void *buffer, int blocksize, std::string &ip) = 0;
+	virtual int			sendBinaryTo(void *buffer, std::string const & host, int port, int blocksize) = 0;
 	//All
 	virtual void		setSocket(int socket) = 0;
 	virtual int			getSocket() const = 0;

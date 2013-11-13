@@ -212,3 +212,41 @@ int			WinSocket::sendBinary(void *point, int len)
 		return NULL;
 	return 0;
 }
+
+int WinSocket::recBinaryFrom(void* buffer , int blocksize, std::string &ip)
+{
+	WSABUF Databuf;
+	DWORD receive;
+	struct sockaddr_in in;
+	int len;
+
+	Databuf.len = blocksize + 1;
+	Databuf.buf = (char *)buffer;
+	receive = blocksize;
+	int size = sizeof(in);
+	if ((len = WSARecvFrom(this->sock, &Databuf, 1, &receive, 0, (SOCKADDR *)& in, &size, 0, 0)) ==  SOCKET_ERROR)
+		return (-1);
+	char cip[32];
+	if ((ip = InetNtop( AF_INET, &in, cip, 32)) == "")
+		{
+			wprintf(L"InetNtop failed with error %u\n", WSAGetLastError());
+			return -1;
+		}
+	return len;
+}
+
+int WinSocket::sendBinaryTo(void* data, std::string const &host, int port, int size)
+{
+	struct sockaddr_in that;
+	WSABUF Databuf;
+	
+	Databuf.len = size;
+	Databuf.buf = (CHAR * )data;
+	that.sin_family = AF_INET;
+	that.sin_port = htons(port);
+	that.sin_addr.s_addr = inet_addr(host.c_str());
+	int sizet = sizeof(that);
+	if (WSASendTo(this->sock, &Databuf, 1, &Databuf.len, 0,  (SOCKADDR *)& that, sizet, 0, 0) == SOCKET_ERROR)
+		return -1;
+	return 0;
+}

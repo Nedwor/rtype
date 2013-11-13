@@ -83,6 +83,7 @@
     <ClCompile Include="ConnexionState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="UnixSocket.cpp" />
     <ClCompile Include="WinSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +93,7 @@
     <ClInclude Include="ISocket.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="rfc.h" />
+    <ClInclude Include="UnixSocket.h" />
     <ClInclude Include="WinSocket.h" />
   </ItemGroup>
   <ItemGroup>

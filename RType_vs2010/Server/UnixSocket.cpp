@@ -23,7 +23,7 @@ bool	UnixSocket::connectToServer(std::string const & host, short port)
 	this->sin_s.sin_addr.s_addr = inet_addr(host.c_str());
 	this->sin_s.sin_family = AF_INET;
 	this->sin_s.sin_port = htons(port);
-	if (connect(this->sock, (SOCKADDR *)&this->sin_s, sizeof(this->sin_s)) == -1)
+	if (connect(this->sock, (sockaddr *)&this->sin_s, sizeof(this->sin_s)) == -1)
 		return false;
 	return true;
 }
@@ -33,7 +33,7 @@ bool	UnixSocket::bindSocket(short port)
 	this->sin.sin_addr.s_addr = inet_addr(INADDR_ANY);
 	this->sin.sin_family = AF_INET;
 	this->sin.sin_port = htons(port);
-	if (bind(this->sock, (SOCKADDR *)&this->sin, sizeof(this->sin)) == SOCKET_ERROR)
+	if (bind(this->sock, (sockaddr *)&this->sin, sizeof(this->sin)) == -1)
 		return false;
 	return true;
 }
@@ -58,6 +58,13 @@ int UnixSocket::sendData(std::string const & data)
 	return len;
 }
 
+bool UnixSocket::initUDP(int port)
+{
+	if (!this->initSocket(SOCK_DGRAM, 0))
+		return false;
+	return this->bindSocket(port);
+}
+
 bool UnixSocket::closeSocket()
 {
 	if (close(this->sock) == -1)
@@ -65,4 +72,57 @@ bool UnixSocket::closeSocket()
 	return true;
 }
 
+int UnixSocket::recDataFrom(std::string &buffer, int blocksize)
+{
+	char		buf[blocksize + 1];
+	sockaddr_in	sin;
+	unsigned int	size = sizeof(sin);
+
+	if (recvfrom(this->sock, buf, blocksize, 0, (sockaddr *)(&sin), &size) == -1)
+		return -1;
+	buffer = buf;
+	return 0;
+}
+
+int UnixSocket::sendDataTo(std::string const &data, std::string const &host, int port)
+{
+	sockaddr_in	sin;
+	int	size = sizeof(sin);
+
+	sin.sin_addr.s_addr = inet_addr(host.c_str());
+	sin.sin_family = AF_INET;
+	sin.sin_port = htons(port);
+	return sendto(this->sock, (char *)data.c_str(), data.length(), 0, (sockaddr *)(&sin), size);
+}
+
+void UnixSocket::setSocket(int socket)
+{
+	this->sock = socket;
+}
+
+int UnixSocket::getSocket() const
+{
+	return this->sock;
+};
+
+int UnixSocket::recBinaryFrom(void* buffer , int blocksize, std::string &ip)
+{
+	sockaddr_in	sin;
+	unsigned int	size = sizeof(sin);
+
+	if (recvfrom(this->sock, buffer, blocksize, 0, (sockaddr *)(&sin), &size) == -1)
+		return -1;
+	return 0;
+}
+
+int UnixSocket::sendBinaryTo(void* data, std::string const &host, int port, int size)
+{
+	sockaddr_in	sin;
+	int	size = sizeof(sin);
+
+	sin.sin_addr.s_addr = inet_addr(host.c_str());
+	sin.sin_family = AF_INET;
+	sin.sin_port = htons(port);
+	return sendto(this->sock, (char *)data, data.length(), 0, (sockaddr *)(&sin), size);
+}
 #endif

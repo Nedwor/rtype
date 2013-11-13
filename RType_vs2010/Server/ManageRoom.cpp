@@ -30,6 +30,11 @@ int	ManageRoom::getMaxFDAndSet()
 	FD_ZERO(&(this->read));
 	max = this->server->getSocket();
 	FD_SET(max, &(this->read));
+	int val;
+	val = this->Udp->getSocket();
+	if (val > max)
+		max  = val;
+	FD_SET(val, &(this->read));
 	for (std::list<Client *>::iterator it = this->clList.begin(); it != this->clList.end(); ++it)
 	{
 		ISocket *s = (*it)->getSocket();
@@ -105,9 +110,11 @@ void ManageRoom::lauchServeur(int port)
 {
 	#ifdef _WIN32
 	ISocket *socket = new WinSocket;
+	this->Udp = new WinSocket;
 	WSADATA WSAData;
 	WSAStartup(MAKEWORD(2,0), &WSAData);
 #endif
+	this->Udp->initUDP(7274);
 	this->server = socket;
 	if (socket->initServer(7273) == false)
 		return;
@@ -132,6 +139,10 @@ void ManageRoom::lauchServeur(int port)
 				Client *cl = new Client(AObject::Ally, 0, 0, 0, 0, 0, 0, 0);
 				cl->setSocket(sock);
 				clList.push_front(cl);
+			}
+			else if (FD_ISSET(this->Udp->getSocket(), &(this->read)))
+			{
+				std::cerr << "Message UDP" << std::endl;;
 			}
 			else
 				std::cout << "Refusé" << std::endl;

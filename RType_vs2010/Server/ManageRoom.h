@@ -27,6 +27,7 @@ private:
 	std::list<Client *> clList;
 	fd_set read;
 	ISocket *server;
+	ISocket *Udp;
 	std::map<TCP_PACKET_TYPE, ptr> TCPActions;
 	std::map<short, Room *> listRoom;
 	std::map<std::string, Room *>	_access;

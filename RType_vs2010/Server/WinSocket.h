@@ -26,6 +26,8 @@ public:
 	bool initUDP(int port);
 	bool closeSocket();
 	int  recDataFrom(std::string & buffer, int blocksize);	int  sendDataTo(std::string const & data, std::string const &host, int port);
+	int	 recBinaryFrom(void *buffer, int blocksize, std::string &ip);
+	int	 sendBinaryTo(void *buffer, std::string const & host, int port, int blocksize);
 
 	//All
 	void	setSocket(int socket);
