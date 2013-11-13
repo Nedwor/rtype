@@ -25,9 +25,10 @@ public:
 	void	handleCreateGame(void *buffer, Client *cl);
 private:
 	std::list<Client *> clList;
-	std::list<Room *> listRoom;
 	fd_set read;
 	ISocket *server;
 	std::map<TCP_PACKET_TYPE, ptr> TCPActions;
+	std::map<short, Room *> listRoom;
+	std::map<std::string, Room *>	_access;
 	int currentGameId;
 };

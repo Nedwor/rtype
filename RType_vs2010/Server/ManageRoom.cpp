@@ -64,6 +64,9 @@ void	ManageRoom::check_list()
 				{
 					socket->closeSocket();
 					this->clList.erase(it++);
+					std::map<std::string, Room *>::iterator it;
+					if ((it = this->_access.find(socket->getIp())) != this->_access.end())
+						this->_access.erase(it);
 				}
 				else
 				{
@@ -147,11 +150,10 @@ void	ManageRoom::handleCreateGame(void *buffer, Client *cl)
 
 	Room *room = new Room;
 
-	room->setGameId(this->currentGameId++);
+	room->setGameId(this->currentGameId);
 	room->setNbMax(create->nb_max);
 	char id = room->addClient(cl);
-	this->listRoom.push_front(room);
-	
+	this->listRoom[this->currentGameId++] = room;
 	int i = 0;
 	int len;
 	const char *str = cl->getName().c_str();
@@ -159,8 +161,8 @@ void	ManageRoom::handleCreateGame(void *buffer, Client *cl)
 	t_TCPPlayer Player;
 
 	//On prépare le packet pour prévenir le joueur de sa connection à la partie créée
+
 	while (str[i])
-	std::cout << cl->getName() << " avec "<< cl->getIp() << " comme ip" << std::endl;
 		Player.name[i] = str[i++];
 	Player.player_id = id;
 	Player.status = NOT_READY;
@@ -168,9 +170,9 @@ void	ManageRoom::handleCreateGame(void *buffer, Client *cl)
 	Player.header.type = PLAYER;
 
 	sock = cl->getSocket();
+	this->_access[sock->getIp()] = room;
 	if ((len = sock->sendBinary(&Player, sizeof(Player))) < 0)
 		std::cout << "Error while sending Create" << std::endl;
-
 }
 
 void	ManageRoom::handleListGames(void *buffer, Client *cl)
@@ -182,11 +184,11 @@ void	ManageRoom::handleListGames(void *buffer, Client *cl)
 
 	Game.header.packetSize = sizeof(Game);
 	Game.header.type = GAME; 
-	for (std::list<Room *>::iterator it = this->listRoom.begin(); it != this->listRoom.end(); ++it)
+	for (std::map<short, Room *>::iterator it = this->listRoom.begin(); it != this->listRoom.end(); ++it)
 	{
-		Game.nb_ingame = (*it)->getNbIngame();
-		Game.nb_max = (*it)->getNbMax();
-		Game.id_game = (*it)->getGameId();
+		Game.nb_ingame = ((*it).second)->getNbIngame();
+		Game.nb_max = ((*it).second)->getNbMax();
+		Game.id_game = ((*it).second)->getGameId();
 		if ((len = sock->sendBinary(&Game, sizeof(Game))) < 0)
 			std::cout << "Error while sending Game" << std::endl;
 	}
