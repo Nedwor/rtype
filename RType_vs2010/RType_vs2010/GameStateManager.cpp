@@ -41,7 +41,6 @@ void	GameStateManager::run()
 		this->_states.top()->draw(*this->_win);
 		this->_win->display();
 		sf::Time time2 = this->_clock.getElapsedTime();
-		std::cout<< time2.asMilliseconds() << " !! " << 16 << std::endl;
 		if (time2.asMilliseconds() < 16)
 			Sleep(16 - time2.asMilliseconds());
 		currState = this->_states.top();

@@ -153,12 +153,6 @@ void		ConnexionState::draw(sf::RenderWindow& window)
 
 void	ConnexionState::execute(sf::RenderWindow& window)
 {
-	if (this->_frames <= 2)
-	{
-		this->_frames += 1;
-		return;
-	}
-	this->_frames = 0;
 	sf::Vector2i MousePos = sf::Mouse::getPosition(window);
 	this->CursorS->setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
 	sf::IntRect AddrRect(this->AddrBoxS->getPosition().x, this->AddrBoxS->getPosition().y, this->AddrBoxS->getLocalBounds().width, this->AddrBoxS->getLocalBounds().height);
@@ -265,6 +259,12 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 			this->RecordPort = false;
 		}
 	}
+	if (this->_frames <= 2)
+	{
+		this->_frames += 1;
+		return;
+	}
+	this->_frames = 0;
 	if (this->RecordAddr)
 	{
 		if (sf::Keyboard::isKeyPressed(this->_lastKey) == false || this->_testKey > 0 || sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) == true)
