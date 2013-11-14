@@ -39,7 +39,7 @@ public:
 	void	pause();
 	void	createObject(int index);
 	void	connect(std::string name, std::string ip);
-	/*IGameState	*getCurrentState();
+	IGameState*	getCurrentState();
 	void	pushState(IGameState* state);
-	void	popState(IGameState* state);*/
+	void	popState();
 };

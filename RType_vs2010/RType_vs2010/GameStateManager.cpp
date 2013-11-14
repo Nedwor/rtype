@@ -47,3 +47,18 @@ void	GameStateManager::run()
 		currState = this->_states.top();
 	}
 }
+
+IGameState*		GameStateManager::getCurrentState()
+{
+	return this->_states.top();
+}
+
+void			GameStateManager::pushState(IGameState* state)
+{
+	this->_states.push(state);
+}
+
+void			GameStateManager::popState()
+{
+	this->_states.pop();
+}
