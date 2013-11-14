@@ -3,6 +3,7 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1024, 768), "R-Type");
+	window.setMouseCursorVisible(false);
 	ConnexionState	CS;
 	CS.presentation(window);
 	GameStateManager manager(CS, &window);

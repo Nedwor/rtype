@@ -55,6 +55,9 @@ ConnexionState::ConnexionState()
 	this->font = new sf::Font;
 	this->MusicOn = false;
 
+	this->CursorT = new sf::Texture;
+    this->CursorS = new sf::Sprite;
+
 	this->ConnexButtonT = new sf::Texture;
 	this->ConnexButtonS = new sf::Sprite;
 
@@ -103,6 +106,9 @@ ConnexionState::ConnexionState()
 	this->ConnexButtonT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\ButtonConnex.jpg");							  
 	this->ConnexButtonS->setTexture(*this->ConnexButtonT, false);
 
+    this->CursorT->loadFromFile("..\\Release\\ressources\\PresentationConnexion\\cursor.png");
+    this->CursorS->setTexture(*this->CursorT, false);
+
 	#ifdef _WIN32
 		//socket = new WinSocket;
 		WSADATA WSAData;
@@ -128,7 +134,7 @@ void	ConnexionState::presentation(sf::RenderWindow& window)
 		window.draw(*this->Background);
 		window.display();
 		i++;
-		Sleep(500);
+		Sleep(5);
 	}
 }
 
@@ -142,6 +148,7 @@ void		ConnexionState::draw(sf::RenderWindow& window)
 	window.draw(*this->AddrText);
 	window.draw(*this->PortText);
 	window.draw(*this->NameText);
+	window.draw(*this->CursorS);
 }
 
 void	ConnexionState::execute(sf::RenderWindow& window)
@@ -153,6 +160,7 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 	}
 	this->_frames = 0;
 	sf::Vector2i MousePos = sf::Mouse::getPosition(window);
+	this->CursorS->setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
 	sf::IntRect AddrRect(this->AddrBoxS->getPosition().x, this->AddrBoxS->getPosition().y, this->AddrBoxS->getLocalBounds().width, this->AddrBoxS->getLocalBounds().height);
 	sf::IntRect PortRect(this->PortBoxS->getPosition().x, this->PortBoxS->getPosition().y, this->PortBoxS->getLocalBounds().width, this->PortBoxS->getLocalBounds().height);
 	sf::IntRect NameRect(this->NameBoxS->getPosition().x, this->NameBoxS->getPosition().y, this->NameBoxS->getLocalBounds().width, this->NameBoxS->getLocalBounds().height);

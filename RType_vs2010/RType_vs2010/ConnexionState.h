@@ -13,6 +13,8 @@ private:
 	int										_frames;
 	int										_testKey;
 	sf::Keyboard::Key						_lastKey;
+	sf::Texture								*CursorT;
+	sf::Sprite								*CursorS;
 	std::stack<sf::Sprite*>					BgVec;
 	sf::Texture								*Planete;
 	sf::Sprite								*Background;
