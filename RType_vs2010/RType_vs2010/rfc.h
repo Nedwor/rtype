@@ -49,6 +49,7 @@ typedef struct s_TCPError
 typedef struct s_TCPGame
 {
 	t_TCPHeader header;
+	char  name_game[32];
 	short id_game;
 	char  nb_max;
 	char  nb_ingame;
@@ -57,6 +58,7 @@ typedef struct s_TCPGame
 typedef struct s_TCPCreate
 {
 	t_TCPHeader header;
+	char  name_game[32];
 	char nb_max;
 }t_TCPCreate;
 

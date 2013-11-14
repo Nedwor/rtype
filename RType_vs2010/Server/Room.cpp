@@ -92,3 +92,13 @@ bool Room::initGame()
 	}
 	return true;
 }
+
+std::string Room::getName() const
+{
+	return this->_name;
+}
+
+void Room::setName(std::string const &name)
+{
+	this->_name = name;
+}

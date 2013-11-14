@@ -113,7 +113,7 @@ void ManageRoom::sendErrorPacket(ISocket *socket, ERROR_TYPE err)
 
 void ManageRoom::lauchServeur(int port)
 {
-	#ifdef _WIN32
+#ifdef _WIN32
 	ISocket *socket = new WinSocket;
 	this->Udp = new WinSocket;
 	WSADATA WSAData;
@@ -141,11 +141,9 @@ void ManageRoom::lauchServeur(int port)
 		{
 			if ((sock = this->server->acceptedConnection()) != NULL)
 			{
-				std::cout << "lol1" << std::endl;
 				Client *cl = new Client(AObject::Ally, 0, 0, 0, 0, 0, 0, 0);
 				cl->setSocket(sock);
 				clList.push_front(cl);
-				std::cout << "lol2" << std::endl;
 			}
 			else if (FD_ISSET(this->Udp->getSocket(), &(this->read)))
 			{
@@ -171,6 +169,8 @@ void	ManageRoom::handleCreateGame(void *buffer, Client *cl)
 
 	room->setGameId(this->currentGameId);
 	room->setNbMax(create->nb_max);
+	room->setName(create->name_game);
+	std::cout << "Creating room=" << room->getName() << std::endl;
 	char id = room->addClient(cl);
 	std::cout << (int)id  << std::endl;
 	this->listRoom[this->currentGameId++] = room;
@@ -184,6 +184,7 @@ void	ManageRoom::handleCreateGame(void *buffer, Client *cl)
 
 	while (str[i])
 		Player.name[i] = str[i++];
+	Player.name[i] = '\0';
 	Player.player_id = id;
 	Player.status = NOT_READY;
 	Player.header.packetSize = sizeof(Player);

@@ -206,6 +206,8 @@ void	ConnexionState::execute(sf::RenderWindow& window)
 				std::cout << "Creating" << std::endl;
 				cr.header.type = CREATE_GAME;
 				cr.header.packetSize = sizeof(cr);
+				cr.name_game[0] = 't';
+				cr.name_game[1] = '\0';
 				cr.nb_max = 4;
 				this->_socket->sendBinary(&cr, sizeof(cr));
 			}
